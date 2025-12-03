@@ -2,25 +2,41 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Правила сервиса BoomBoom Taxi</title>
+  <title>BoomBoom Taxi — платформа, где водитель сам ставит цену</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Правила использования сервиса BoomBoom Taxi и юридический дисклеймер." />
+  <meta name="description" content="BoomBoom Taxi — информационная платформа о сервисе, где водитель сам ставит цену, а пассажир выбирает лучшее предложение. Безналичная оплата, двусторонний рейтинг, акции с бесплатными поездками." />
+
   <style>
-    body {
+    :root {
+      --yellow: #ffc300;
+      --yellow-deep: #ffb000;
+      --black: #111111;
+      --dark: #181818;
+      --accent: #ff6b00;
+      --border-radius: 16px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #050505;
-      color: #f5f5f5;
+      background: radial-gradient(circle at top, #333 0, #000 40%);
+      color: #f9f9f9;
       -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: #ffc300;
       text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+      color: inherit;
     }
 
     .page {
@@ -29,292 +45,1180 @@
       flex-direction: column;
     }
 
+    /* ==== HEADER ==== */
     .header {
-      border-bottom: 2px solid #ffc300;
-      background: #000;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(to right, #000 0, #111 40%, #111 60%, #000 100%);
+      border-bottom: 2px solid var(--yellow);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
     }
 
     .header-inner {
-      max-width: 960px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 14px 16px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
     }
 
-    .logo {
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 3px #000, 0 0 25px rgba(0,0,0,0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-badge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(
+          135deg,
+          rgba(0,0,0,0.1) 0,
+          rgba(0,0,0,0.2) 30%,
+          rgba(0,0,0,0.6) 30%,
+          rgba(0,0,0,0.6) 70%,
+          rgba(0,0,0,0.2) 70%,
+          rgba(0,0,0,0.1) 100%
+        );
+      mix-blend-mode: multiply;
+    }
+
+    .logo-text-main {
       font-weight: 900;
+      font-size: 16px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #000;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-title {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-title-main {
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .logo-title-sub {
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 15px;
+      opacity: 0.85;
+      color: var(--yellow);
     }
 
-    .logo span {
-      color: #ffc300;
-    }
-
-    .back-link {
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
       font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      opacity: 0.85;
+      letter-spacing: 0.1em;
+    }
+
+    .header-link {
+      opacity: 0.8;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .header-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--yellow);
+      transition: width 0.2s ease;
+    }
+
+    .header-link:hover::after {
+      width: 100%;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: #181818;
+      border-radius: 999px;
+      padding: 4px;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: #f0f0f0;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .lang-btn.active {
+      background: var(--yellow);
+      color: #000;
+      opacity: 1;
+      font-weight: 700;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn-outline {
+      border-color: var(--yellow);
+      background: transparent;
+      color: var(--yellow);
+    }
+
+    .btn-outline:hover {
+      background: #222;
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(255,195,0,0.4);
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: #000;
+      box-shadow: 0 10px 30px rgba(255, 195, 0, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--yellow-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.6);
+    }
+
+    .btn span.icon {
+      font-size: 16px;
+    }
+
+    /* checker strip */
+    .checker-strip {
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #000 0,
+          #000 12px,
+          #fff 12px,
+          #fff 24px
+        );
+      height: 14px;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.8);
+      position: relative;
+      z-index: 40;
     }
 
     .main {
       flex: 1;
-      max-width: 960px;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 20px 16px 40px;
-      line-height: 1.6;
-      font-size: 14px;
+      padding: 36px 20px 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
     }
 
-    h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 24px;
+      }
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
+      color: #ffdd6a;
+      opacity: 0.9;
     }
 
-    h2 {
-      font-size: 18px;
-      margin-top: 26px;
-      margin-bottom: 6px;
+    .hero-tagline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255,107,0,0.8);
     }
 
-    h3 {
-      font-size: 15px;
-      margin-top: 16px;
+    .hero-title {
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .hero-title span.highlight {
+      color: var(--yellow);
+      text-shadow: 0 0 18px rgba(255,195,0,0.55);
+      border-bottom: 3px solid var(--yellow);
+      padding-bottom: 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      max-width: 540px;
+      color: #f1f1f1;
+      opacity: 0.92;
+    }
+
+    .hero-subtitle-strong {
+      font-weight: 600;
+      color: #ffef9f;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
       margin-bottom: 4px;
     }
 
-    .tagline {
-      font-size: 12px;
+    .hero-note {
+      font-size: 13px;
+      opacity: 0.8;
+      color: #dddddd;
+    }
+
+    .hero-note b {
+      color: var(--yellow);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 16px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .hero-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-stat-label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    .hero-stat-value {
+      font-weight: 700;
+      color: var(--yellow);
+    }
+
+    /* RIGHT TAXI CARD */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .taxi-card {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 32px;
+      background: linear-gradient(145deg, #222 0, #111 50%, #000 100%);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 20px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+
+    .taxi-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .taxi-card-title {
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: #ffdd6a;
-      margin-bottom: 18px;
+      color: #ffea96;
     }
 
-    ul {
-      padding-left: 18px;
-      margin-top: 4px;
+    .taxi-card-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,195,0,0.1);
+      border: 1px solid rgba(255,195,0,0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .taxi-card-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 10px rgba(255,195,0,1);
+    }
+
+    .taxi-car {
+      position: relative;
+      margin-top: 16px;
+      margin-bottom: 18px;
+      padding: 16px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--yellow) 0, #ffd700 40%, #ffb000 100%);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.65);
+    }
+
+    .taxi-car-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 6px;
     }
 
-    li {
+    .taxi-car-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 800;
+      color: #000;
+      padding: 2px 10px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 999px;
+    }
+
+    .taxi-car-id {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(0,0,0,0.7);
+    }
+
+    .taxi-car-body {
+      position: relative;
+      margin-top: 6px;
+      border-radius: 18px;
+      padding: 12px;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .taxi-car-body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #000 0,
+          #000 10px,
+          #fff 10px,
+          #fff 20px
+        );
+      opacity: 0.2;
+      mix-blend-mode: screen;
+    }
+
+    .taxi-car-row {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .taxi-car-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .taxi-car-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+
+    .taxi-car-tagline {
+      position: relative;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .taxi-car-bottom {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: rgba(0,0,0,0.8);
+    }
+
+    .taxi-wheels {
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      bottom: -18px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .taxi-wheel {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #000;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    .taxi-wheel::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 3px solid #444;
+    }
+
+    .taxi-road {
+      margin-top: 28px;
+      height: 30px;
+      border-radius: 999px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #fff 0,
+          #fff 22px,
+          transparent 22px,
+          transparent 40px
+        );
+      background-color: #222;
+      border: 2px solid #000;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.9);
+    }
+
+    .taxi-card-footer {
+      margin-top: 18px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .taxi-card-footer span strong {
+      color: var(--yellow);
+    }
+
+    /* Sections */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #f8f8f8;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      opacity: 0.75;
+      max-width: 420px;
+    }
+
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .two-col-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: #101010;
+      border-radius: var(--border-radius);
+      padding: 18px 16px 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.7);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--yellow);
+    }
+
+    .card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.7;
+      color: #bbbbbb;
       margin-bottom: 4px;
     }
 
-    .note {
-      font-size: 12px;
-      opacity: 0.8;
-      margin-top: 16px;
-      border-left: 3px solid #ffc300;
-      padding-left: 10px;
+    .list {
+      margin-top: 6px;
+      padding-left: 16px;
     }
 
+    .list li {
+      margin-bottom: 4px;
+    }
+
+    /* Free ride promo */
+    .promo-card {
+      background: radial-gradient(circle at top left, rgba(255,195,0,0.2), #121212);
+      border-radius: 20px;
+      padding: 18px 16px 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.8);
+      font-size: 13px;
+    }
+
+    .promo-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 8px;
+    }
+
+    .promo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .promo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 12px rgba(255,195,0,1);
+    }
+
+    .promo-note {
+      font-size: 11px;
+      opacity: 0.78;
+      margin-top: 8px;
+    }
+
+    /* FOOTER */
     .footer {
-      border-top: 1px solid rgba(255,255,255,0.18);
-      background: #000;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      margin-top: 10px;
+      background: #050505;
     }
 
     .footer-inner {
-      max-width: 960px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 14px 16px 18px;
-      font-size: 11px;
-      opacity: 0.8;
+      padding: 12px 20px 18px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: space-between;
+      align-items: flex-start;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+    }
+
+    .footer-link:hover {
+      color: var(--yellow);
+      opacity: 1;
+    }
+
+    .footer-disclaimer {
+      max-width: 620px;
+      line-height: 1.5;
+    }
+
+    .footer-disclaimer small {
+      display: block;
+      margin-top: 4px;
+      opacity: 0.75;
     }
   </style>
 </head>
 <body>
-  <div class="page">
+  <div class="page" id="page-root">
+    <!-- HEADER -->
     <header class="header">
       <div class="header-inner">
-        <div class="logo">
-          <span>BoomBoom Taxi</span> · Правила сервиса
+        <div class="logo-wrap">
+          <div class="logo-badge">
+            <span class="logo-text-main">BB</span>
+          </div>
+          <div class="logo-title">
+            <div class="logo-title-main" data-i18n="brandTitle">BoomBoom Taxi</div>
+            <div class="logo-title-sub" data-i18n="brandSubtitle">Yellow Cab Platform</div>
+          </div>
         </div>
-        <a href="index.html" class="back-link">← На главную</a>
+
+        <nav class="header-nav">
+          <a href="#how" class="header-link" data-i18n="navHow">Как это работает</a>
+          <a href="#roles" class="header-link" data-i18n="navForWhom">Для кого</a>
+          <a href="#promo" class="header-link" data-i18n="navPromo">Бесплатные поездки</a>
+        </nav>
+
+        <div class="header-right">
+          <div class="lang-switch" aria-label="Language switch">
+            <button class="lang-btn active" data-lang="ru">RU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <button class="btn btn-outline">
+            <span class="icon">ℹ️</span>
+            <span data-i18n="btnInfo">Инфо-сайт</span>
+          </button>
+        </div>
       </div>
     </header>
 
+    <div class="checker-strip"></div>
+
     <main class="main">
-      <div class="tagline">Юридический дисклеймер и условия использования платформы</div>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <div class="hero-tagline">
+            <span class="hero-tagline-dot"></span>
+            <span data-i18n="heroTagline">Инфо-платформа в стиле нью-йоркского жёлтого такси</span>
+          </div>
 
-      <h1>Правила сервиса BoomBoom Taxi</h1>
+          <h1 class="hero-title">
+            <span data-i18n="heroTitleLine1">Такси, где</span>
+            <span class="highlight" data-i18n="heroTitleLine2">водитель сам ставит цену</span><br />
+            <span data-i18n="heroTitleLine3">а пассажир выбирает лучшее предложение.</span>
+          </h1>
 
-      <p>
-        Настоящие Правила сервиса определяют условия использования IT-платформы BoomBoom Taxi
-        (далее — «Сервис»), предназначенной для поиска и согласования поездок между пользователями:
-        водителями и пассажирами.
-      </p>
+          <p class="hero-subtitle">
+            <span class="hero-subtitle-strong" data-i18n="heroSubtitleStrong">BoomBoom Taxi</span>
+            <span data-i18n="heroSubtitleText">
+              — информационный сайт о платформе, где цена формируется водителем, поездки оплачиваются только
+              безналично, а позже появятся две отдельные мобильные аппки — для водителя и для пассажира.
+            </span>
+          </p>
 
-      <h2>1. Правовой статус сервиса</h2>
+          <div class="hero-actions">
+            <button class="btn btn-primary">
+              <span class="icon">🚕</span>
+              <span data-i18n="btnDriverApp">Приложение для водителя (скоро)</span>
+            </button>
+            <button class="btn btn-outline">
+              <span class="icon">📲</span>
+              <span data-i18n="btnPassengerApp">Приложение для пассажира (скоро)</span>
+            </button>
+          </div>
 
-      <p>
-        1.1. BoomBoom Taxi является <strong>информационной (IT) платформой-агрегатором</strong>, которая
-        предоставляет пользователям техническую возможность:
-      </p>
+          <p class="hero-note" data-i18n="heroNote">
+            Сайт не принимает заказы и не перевозит пассажиров — это витрина и описание модели сервиса.
+          </p>
 
-      <ul>
-        <li>пассажирам — разместить запрос на поездку;</li>
-        <li>водителям — откликнуться на запрос и предложить условия поездки (цена, время подачи и т.д.).</li>
-      </ul>
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <div class="hero-stat-label" data-i18n="statModelLabel">Модель</div>
+              <div class="hero-stat-value" data-i18n="statModelValue">Driver sets the price</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-label" data-i18n="statPaymentsLabel">Оплата</div>
+              <div class="hero-stat-value" data-i18n="statPaymentsValue">Только безналично</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-label" data-i18n="statBonusLabel">Бонусы</div>
+              <div class="hero-stat-value" data-i18n="statBonusValue">Каждая ~100-я поездка бесплатно</div>
+            </div>
+          </div>
+        </div>
 
-      <p>
-        1.2. Сервис <strong>не является перевозчиком, таксомоторной компанией, диспетчерской службой такси</strong>
-        и не оказывает услугу перевозки пассажиров самостоятельно.
-      </p>
+        <div class="hero-right">
+          <div class="taxi-card">
+            <div class="taxi-card-header">
+              <div class="taxi-card-title" data-i18n="meterTitle">Пример расчёта поездки</div>
+              <div class="taxi-card-pill">
+                <span class="taxi-card-pill-dot"></span>
+                <span data-i18n="meterPill">Live taxi meter</span>
+              </div>
+            </div>
 
-      <p>
-        1.3. Фактическая поездка осуществляется исключительно на основании соглашения между
-        пассажиром и водителем. BoomBoom Taxi не выступает стороной договора перевозки и не несёт
-        ответственности за его исполнение.
-      </p>
+            <div class="taxi-car">
+              <div class="taxi-car-top">
+                <div class="taxi-car-badge" data-i18n="meterCarBadge">Official Yellow Style</div>
+                <div class="taxi-car-id">BB · NYC 100</div>
+              </div>
 
-      <h2>2. Ответственность водителей</h2>
+              <div class="taxi-car-body">
+                <div class="taxi-car-row">
+                  <span class="taxi-car-label" data-i18n="meterBase">Посадка</span>
+                  <span class="taxi-car-value">2.00 $</span>
+                </div>
+                <div class="taxi-car-row">
+                  <span class="taxi-car-label" data-i18n="meterDistance">Дистанция</span>
+                  <span class="taxi-car-value" data-i18n="meterDistanceValue">10 км × 0.50 $</span>
+                </div>
+                <div class="taxi-car-row">
+                  <span class="taxi-car-label" data-i18n="meterWait">Ожидание</span>
+                  <span class="taxi-car-value" data-i18n="meterWaitValue">7 мин × 0.10 $</span>
+                </div>
+                <div class="taxi-car-tagline" data-i18n="meterTagline">
+                  Driver sets price · passenger chooses
+                </div>
+              </div>
 
-      <p>
-        2.1. Зарегистрируясь как водитель, пользователь подтверждает, что:
-      </p>
+              <div class="taxi-car-bottom">
+                <span data-i18n="meterTotal">Итого: <b>7.70 $</b></span>
+                <span data-i18n="meterNoHidden">без скрытых комиссий</span>
+              </div>
 
-      <ul>
-        <li>самостоятельно соблюдает требования местного законодательства (лицензии, разрешения, регистрация статуса и т.п., если они обязательны в его регионе);</li>
-        <li>содержит транспортное средство в технически исправном состоянии и имеет необходимые документы на управление;</li>
-        <li>соблюдает правила дорожного движения и иные применимые нормы;</li>
-        <li>самостоятельно исполняет требования налогового законодательства и обязанности по уплате налогов.</li>
-      </ul>
+              <div class="taxi-wheels">
+                <div class="taxi-wheel"></div>
+                <div class="taxi-wheel"></div>
+              </div>
+            </div>
 
-      <p>
-        2.2. BoomBoom Taxi <strong>не проверяет и не гарантирует</strong> наличие у водителя специальных
-        разрешений/лицензий на перевозку пассажиров и не несёт ответственность за их отсутствие.
-      </p>
+            <div class="taxi-road"></div>
 
-      <h2>3. Роль пассажира</h2>
+            <div class="taxi-card-footer">
+              <span data-i18n="meterFooterLeft">
+                <strong>Ожидание</strong> считается по минутам, движение — по километрам.
+              </span>
+              <span data-i18n="meterFooterRight">BoomBoom Taxi · Info only</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <p>
-        3.1. Пассажир, используя Сервис, самостоятельно выбирает водителя из предложенных вариантов
-        с учётом цены, рейтинга, описания автомобиля и иных параметров.
-      </p>
+      <!-- HOW IT WORKS -->
+      <section class="section" id="how">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="howTitle">Как это работает</h2>
+          <p class="section-subtitle" data-i18n="howSubtitle">
+            Сайт только объясняет концепцию. Все реальные поездки будут происходить позже — в мобильных приложениях для водителей и пассажиров.
+          </p>
+        </div>
 
-      <p>
-        3.2. Пассажир несёт ответственность за корректность указания точки отправления,
-        конечного пункта, количества пассажиров, багажа и других условий поездки.
-      </p>
+        <div class="two-col-grid">
+          <div class="card">
+            <div class="card-tag" data-i18n="howStep1Tag">Шаг 1 · Пассажир</div>
+            <div class="card-title" data-i18n="howStep1Title">Создаёт запрос в приложении</div>
+            <p data-i18n="howStep1Text">
+              Пассажир указывает точку A и точку B, видит примерное расстояние и ориентировочную стоимость.
+              Запрос получают ближайшие водители.
+            </p>
+            <ul class="list">
+              <li data-i18n="howStep1Item1">Точная формула: посадка + км + минуты ожидания.</li>
+              <li data-i18n="howStep1Item2">Все цены заранее видимы до начала поездки.</li>
+            </ul>
+          </div>
 
-      <h2>4. Тарификация и расчёт стоимости поездки</h2>
+          <div class="card">
+            <div class="card-tag" data-i18n="howStep2Tag">Шаг 2 · Водитель</div>
+            <div class="card-title" data-i18n="howStep2Title">Сам выставляет тариф</div>
+            <p data-i18n="howStep2Text">
+              Водитель задаёт цену за посадку, километр и минуту простоя. Платформа показывает пассажиру
+              несколько офферов с ценой и рейтингом.
+            </p>
+            <ul class="list">
+              <li data-i18n="howStep2Item1">Рейтинг влияет на комиссию сервиса.</li>
+              <li data-i18n="howStep2Item2">Честный сервис = меньше комиссия.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <p>
-        4.1. Каждый водитель самостоятельно устанавливает:
-      </p>
-      <ul>
-        <li>цену за посадку;</li>
-        <li>цену за 1 км;</li>
-        <li>цену за 1 минуту ожидания (простоя).</li>
-      </ul>
+      <!-- ROLES -->
+      <section class="section" id="roles">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="rolesTitle">Для кого платформа</h2>
+          <p class="section-subtitle" data-i18n="rolesSubtitle">
+            В реальном запуске будут две отдельные аппки: одна для водителей, другая для пассажиров. Сайт лишь объясняет правила игры и идею.
+          </p>
+        </div>
 
-      <p>
-        4.2. Сервис рассчитывает ориентировочную и итоговую стоимость по прозрачной формуле,
-        но <strong>окончательную цену определяет водитель</strong>, а пассажир соглашается с ней,
-        выбирая конкретное предложение.
-      </p>
+        <div class="two-col-grid">
+          <div class="card">
+            <div class="card-tag" data-i18n="driverTag">Для водителей</div>
+            <div class="card-title" data-i18n="driverTitle">Своя цена и честный рейтинг</div>
+            <p data-i18n="driverText1">
+              Вы сами решаете, сколько стоит ваша посадка, километр и минута ожидания. Пассажиры видят ваш рейтинг
+              и выбирают вас по цене и качеству.
+            </p>
+            <p data-i18n="driverText2">
+              Оплата только безналом — меньше риска "не заплатили", прозрачная история поездок.
+            </p>
+          </div>
 
-      <p>
-        4.3. BoomBoom Taxi не гарантирует фиксированную стоимость поездки и не несёт ответственность
-        за изменение цены, если оно согласовано между пассажиром и водителем.
-      </p>
+          <div class="card">
+            <div class="card-tag" data-i18n="passengerTag">Для пассажиров</div>
+            <div class="card-title" data-i18n="passengerTitle">Выбор оффера, а не сюрпризов</div>
+            <p data-i18n="passengerText1">
+              Вы видите несколько предложений от разных водителей: цена, рейтинг, авто, время подачи. Выбираете лучший
+              вариант под свой бюджет и комфорт.
+            </p>
+            <p data-i18n="passengerText2">
+              Иногда платформа берёт поездку на себя — и для вас она становится бесплатной, при этом водитель всё равно получает оплату.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <h2>5. Рейтинг, блокировки и модерация</h2>
+      <!-- PROMO FREE RIDES -->
+      <section class="section" id="promo">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="promoTitle">Каждая ~100-я поездка — за счёт платформы</h2>
+          <p class="section-subtitle" data-i18n="promoSubtitle">
+            Промо-механика, которая мотивирует и водителей, и пассажиров: иногда поездка становится бесплатной для пассажира, а водителю платит BoomBoom Taxi.
+          </p>
+        </div>
 
-      <p>
-        5.1. После каждой поездки водитель и пассажир могут оценить друг друга по системе рейтинга
-        и оставить комментарий.
-      </p>
+        <div class="promo-card">
+          <div class="promo-pill">
+            <span class="promo-dot"></span>
+            <span data-i18n="promoPill">Random free ride</span>
+          </div>
+          <div class="promo-title" data-i18n="promoMainTitle">Примерно каждая сотая поездка — бесплатная</div>
 
-      <p>
-        5.2. Сервис может использовать рейтинги:
-      </p>
+          <p data-i18n="promoText1">
+            Внутри реального приложения платформа будет периодически выбирать поездки, которые становятся бесплатными для пассажира:
+            он видит "0 $", а водитель получает свою сумму от платформы.
+          </p>
 
-      <ul>
-        <li>для сортировки предложений;</li>
-        <li>для снижения/повышения комиссии сервиса для водителей;</li>
-        <li>для модерации и возможной блокировки аккаунтов при систематически низких оценках и жалобах.</li>
-      </ul>
+          <ul class="list">
+            <li data-i18n="promoItem1">В среднем около каждой 100-й поездки платформа полностью оплачивает стоимость за пассажира.</li>
+            <li data-i18n="promoItem2">
+              Номер "бесплатной" поездки выбирается <strong>случайно</strong>: это может быть 98-я, 100-я, 101-я и т.д.
+              Чтобы никто не мог "ловить" строго каждую сотую и злоупотреблять механикой.
+            </li>
+            <li data-i18n="promoItem3">Пассажир видит отметку, что сегодня ему повезло, а водитель просто получает оплату как за обычную поездку.</li>
+          </ul>
 
-      <p>
-        5.3. Водители и пассажиры могут добавлять друг друга в личный «чёрный список», после чего
-        они не будут видеть запросы и предложения друг друга в Сервисе.
-      </p>
-
-      <p>
-        5.4. BoomBoom Taxi оставляет за собой право временно ограничивать доступ к Сервису или
-        полностью блокировать аккаунты при нарушении правил, подозрении в мошенничестве, угрозе
-        безопасности других пользователей и в иных случаях, предусмотренных политикой модерации.
-      </p>
-
-      <h2>6. Жалобы и арбитраж</h2>
-
-      <p>
-        6.1. Пользователи могут отправлять жалобы на поездку (качество обслуживания, поведение,
-        безопасность, некорректная стоимость и др.) через интерфейс приложения.
-      </p>
-
-      <p>
-        6.2. Жалобы рассматриваются службой поддержки/модераторами на основании предоставленной информации
-        (история поездки, чат, рейтинг и т.п.). По результатам рассмотрения могут быть применены меры:
-      </p>
-
-      <ul>
-        <li>отсутствие мер (если нарушений не выявлено);</li>
-        <li>предупреждение;</li>
-        <li>изменение рейтинга или временные ограничения;</li>
-        <li>полная блокировка аккаунта.</li>
-      </ul>
-
-      <p>
-        6.3. В финансовых спорных ситуациях (например, завышенная стоимость) решение принимается индивидуально,
-        исходя из данных системы и условий конкретной поездки. BoomBoom Taxi не является гарантом или страховщиком,
-        но по возможности содействует урегулированию конфликтов между пользователями.
-      </p>
-
-      <h2>7. Ограничение ответственности сервиса</h2>
-
-      <p>
-        7.1. BoomBoom Taxi не несёт ответственности за:
-      </p>
-
-      <ul>
-        <li>действия или бездействие водителей и пассажиров;</li>
-        <li>качество и безопасность поездки;</li>
-        <li>состояние транспортных средств;</li>
-        <li>соблюдение пользователями требований законодательства.</li>
-      </ul>
-
-      <p>
-        7.2. Сервис не гарантирует непрерывность, безошибочность и абсолютную техническую доступность
-        приложения и может временно ограничивать доступ для обновлений и техработ.
-      </p>
-
-      <p class="note">
-        Важно: данный текст носит общий информационный характер и должен быть адаптирован и проверен
-        квалифицированным юристом в каждой стране/регионе, где планируется работа сервиса BoomBoom Taxi.
-      </p>
+          <p class="promo-note" data-i18n="promoNote">
+            На этом сайте описан только принцип работы акции. Точная реализация, лимиты и частота бесплатных поездок
+            будут определяться правилами сервиса и могут отличаться от примера.
+          </p>
+        </div>
+      </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-inner">
-        <div>© BoomBoom Taxi · Информационная платформа для поиска поездок.</div>
-        <div>Этот документ не является юридической консультацией. Обратитесь к юристу для адаптации под ваше законодательство.</div>
+        <div class="footer-disclaimer">
+          <div>© BoomBoom Taxi · <span data-i18n="footerInfoLabel">Информационная платформа</span></div>
+          <small data-i18n="footerDisclaimer">
+            BoomBoom Taxi — IT-платформа (агрегатор) для поиска и согласования поездок между пользователями.
+            Сервис не является перевозчиком или таксомоторной компанией и не оказывает услугу перевозки.
+            Все поездки в будущем будут осуществляться по соглашению между водителем и пассажиром.
+            В первой версии сервиса оплата предусмотрена только в безналичной форме.
+          </small>
+        </div>
+        <div class="footer-links">
+          <span class="footer-link" data-i18n="footerRules">Правила сервиса</span>
+          <span class="footer-link" data-i18n="footerTariffs">Тарифы и комиссии</span>
+          <span class="footer-link" data-i18n="footerSupport">Поддержка</span>
+        </div>
       </div>
     </footer>
   </div>
+
+  <script>
+    // Простая i18n-система на фронте
+    const translations = {
+      ru: {
+        brandTitle: "BoomBoom Taxi",
+        brandSubtitle: "Yellow Cab Platform",
+        navHow: "Как это работает",
+        navForWhom: "Для кого",
+        navPromo: "Бесплатные поездки",
+        btnInfo: "Инфо-сайт",
+        heroTagline: "Инфо-платформа в стиле нью-йоркского жёлтого такси",
+        heroTitleLine1: "Такси, где",
+        heroTitleLine2: "водитель сам ставит цену",
+        heroTitleLine3: "а пассажир выбирает лучшее предложение.",
+        heroSubtitleStrong: "BoomBoom Taxi",
+        heroSubtitleText: " — информационный сайт о платформе, где цена формируется водителем, поездки оплачиваются только безналично, а позже появятся две отдельные мобильные аппки — для водителя и для пассажира.",
+        btnDriverApp: "Приложение для водителя (скоро)",
+        btnPassengerApp: "Приложение для пассажира (скоро)",
+        heroNote: "Сайт не принимает заказы и не перевозит пассажиров — это витрина и описание модели сервиса.",
+        statModelLabel: "Модель",
+        statModelValue: "Driver sets the price",
+        statPaymentsLabel: "Оплата",
+        statPaymentsValue: "Только безналично",
+        statBonusLabel: "Бонусы",
+        statBonusValue: "Каждая ~100-я поездка бесплатно",
+        meterTitle: "Пример расчёта поездки",
+        meterPill: "Live taxi meter",
+        meterCarBadge: "Official Yellow Style",
+        meterBase: "Посадка",
+        meterDistance: "Дистанция",
+        meterDistanceValue: "10 км × 0.50 $",
+        meterWait: "Ожидание",
+        meterWaitValue: "7 мин × 0.10 $",
+        meterTagline: "Driver sets price · passenger chooses",
+        meterTotal: "Итого: <b>7.70 $</b>",
+        meterNoHidden: "без скрытых комиссий",
+        meterFooterLeft: "<strong>Ожидание</strong> считается по минутам, движение — по километрам.",
+        meterFooterRight: "BoomBoom Taxi · Info only",
+        howTitle: "Как это работает",
+        howSubtitle: "Сайт только объясняет концепцию. Все реальные поездки будут происходить позже — в мобильных приложениях для водителей и пассажиров.",
+        howStep1Tag: "Шаг 1 · Пассажир",
+        howStep1Title: "Создаёт запрос в приложении",
+        howStep1Text: "Пассажир указывает точку A и точку B, видит примерное расстояние и ориентировочную стоимость. Запрос получают ближайшие водители.",
+        howStep1Item1: "Точная формула: посадка + км + минуты ожидания.",
+        howStep1Item2: "Все цены заранее видимы до начала поездки.",
+        howStep2Tag: "Шаг 2 · Водитель",
+        howStep2Title: "Сам выставляет тариф",
+        howStep2Text: "Водитель задаёт цену за посадку, километр и минуту простоя. Платформа показывает пассажиру несколько офферов с ценой и рейтингом.",
+        howStep2Item1: "Рейтинг влияет на комиссию сервиса.",
+        howStep2Item2: "Честный сервис = меньше комиссия.",
+        rolesTitle: "Для кого платформа",
+        rolesSubtitle: "В реальном запуске будут две отдельные аппки: одна для водителей, другая для пассажиров. Сайт лишь объясняет правила игры и идею.",
+        driverTag: "Для водителей",
+        driverTitle: "Своя цена и честный рейтинг",
+        driverText1: "Вы сами решаете, сколько стоит ваша посадка, километр и минута ожидания. Пассажиры видят ваш рейтинг и выбирают вас по цене и качеству.",
+        driverText2: "Оплата только безналом — меньше риска \"не заплатили\", прозрачная история поездок.",
+        passengerTag: "Для пассажиров",
+        passengerTitle: "Выбор оффера, а не сюрпризов",
+        passengerText1: "Вы видите несколько предложений от разных водителей: цена, рейтинг, авто, время подачи. Выбираете лучший вариант под свой бюджет и комфорт.",
+        passengerText2: "Иногда платформа берёт поездку на себя — и для вас она становится бесплатной, при этом водитель всё равно получает оплату.",
+        promoTitle: "Каждая ~100-я поездка — за счёт платформы",
+        promoSubtitle: "Промо-механика, которая мотивирует и водителей, и пассажиров: иногда поездка становится бесплатной для пассажира, а водителю платит BoomBoom Taxi.",
+        promoPill: "Random free ride",
+        promoMainTitle: "Примерно каждая сотая поездка — бесплатная",
+        promoText1: "Внутри реального приложения платформа будет периодически выбирать поездки, которые становятся бесплатными для пассажира: он видит \"0 $\", а водитель получает свою сумму от платформы.",
+        promoItem1: "В среднем около каждой 100-й поездки платформа полностью оплачивает стоимость за пассажира.",
+        promoItem2: "Номер \"бесплатной\" поездки выбирается <strong>случайно</strong>: это может быть 98-я, 100-я, 101-я и т.д. Чтобы никто не мог \"ловить\" строго каждую сотую и злоупотреблять механикой.",
+        promoItem3: "Пассажир видит отметку, что сегодня ему повезло, а водитель просто получает оплату как за обычную поездку.",
+        promoNote: "На этом сайте описан только принцип работы акции. Точная реализация, лимиты и частота бесплатных поездок будут определяться правилами сервиса и могут отличаться от примера.",
+        footerInfoLabel: "Информационная платформа",
+        footerDisclaimer: "BoomBoom Taxi — IT-платформа (агрегатор) для поиска и согласования поездок между пользователями. Сервис не является перевозчиком или таксомоторной компанией и не оказывает услугу перевозки. Все поездки в будущем будут осуществляться по соглашению между водителем и пассажиром. В первой версии сервиса оплата предусмотрена только в безналичной форме.",
+        footerRules: "Правила сервиса",
+        footerTariffs: "Тарифы и комиссии",
+        footerSupport: "Поддержка"
+      },
+      en: {
+        brandTitle: "BoomBoom Taxi",
+        brandSubtitle: "Yellow Cab Platform",
+        navHow: "How it works",
+        navForWhom: "For whom",
+        navPromo: "Free rides",
+        btnInfo: "Info website",
+        heroTagline: "Info platform in New York yellow cab style",
+        heroTitleLine1: "A taxi where",
+        heroTitleLine2: "the driver sets the price",
+        heroTitleLine3: "and the rider chooses the best offer.",
+        heroSubtitleStrong: "BoomBoom Taxi",
+        heroSubtitleText: " is an informational website about a platform where the price is set by the driver, trips are paid only cashless, and later two separate mobile apps will appear — for drivers and for passengers.",
+        btnDriverApp: "Driver app (coming soon)",
+        btnPassengerApp: "Passenger app (coming soon)",
+        heroNote: "This site does not take orders and does not transport passengers — it is a showcase and concept description.",
+        statModelLabel: "Model",
+        statModelValue: "Driver sets the price",
+        statPaymentsLabel: "Payments",
+        statPaymentsValue: "Cashless only",
+        statBonusLabel: "Bonus",
+        statBonusValue: "Every ~100th trip is free",
+        meterTitle: "Trip cost example",
+        meterPill: "Live taxi meter",
+        meterCarBadge: "Official Yellow Style",
+        meterBase: "Base fare",
+        meterDistance: "Distance",
+        meterDistanceValue: "10 km × 0.50 $",
+        meterWait: "Waiting",
+        meterWaitValue: "7 min × 0.10 $",
+        meterTagline: "Driver sets price · rider chooses",
+        meterTotal: "Total: <b>7.70 $</b>",
+        meterNoHidden: "no hidden fees",
+        meterFooterLeft: "<strong>Waiting</strong> is counted by minutes, movement — by kilometers.",
+        meterFooterRight: "BoomBoom Taxi · Info only",
+        howTitle: "How it works",
+        howSubtitle: "The site only explains the concept. Real trips will happen later — in mobile apps for drivers and passengers.",
+        howStep1Tag: "Step 1 · Rider",
+        howStep1Title: "Creates a request in the app",
+        howStep1Text: "The rider enters point A and B, sees approximate distance and estimated price. Nearby drivers receive this request.",
+        howStep1Item1: "Transparent formula: base fare + km + waiting minutes.",
+        howStep1Item2: "All prices are visible before the trip starts.",
+        howStep2Tag: "Step 2 · Driver",
+        howStep2Title: "Sets own tariff",
+        howStep2Text: "The driver sets prices for base fare, per kilometer and per minute of waiting. The platform shows the rider several offers with price and rating.",
+        howStep2Item1: "Rating affects the service fee.",
+        howStep2Item2: "Better service = lower commission.",
+        rolesTitle: "Who it is for",
+        rolesSubtitle: "At launch there will be two separate apps: one for drivers, one for riders. The website only explains the rules and idea.",
+        driverTag: "For drivers",
+        driverTitle: "Your own price and fair rating",
+        driverText1: "You decide how much your base fare, kilometer and waiting minute cost. Riders see your rating and choose you by price and quality.",
+        driverText2: "Cashless payments only — less risk of not being paid, transparent trip history.",
+        passengerTag: "For riders",
+        passengerTitle: "Choosing offers, not surprises",
+        passengerText1: "You see multiple offers from different drivers: price, rating, car, ETA. You choose the best option for your budget and comfort.",
+        passengerText2: "Sometimes the platform pays for the trip — and it becomes free for you, while the driver still receives the full payment.",
+        promoTitle: "Every ~100th trip is paid by the platform",
+        promoSubtitle: "A promo mechanic that motivates both drivers and riders: sometimes a trip becomes free for the rider, and BoomBoom Taxi pays the driver.",
+        promoPill: "Random free ride",
+        promoMainTitle: "Roughly every hundredth trip is free",
+        promoText1: "Inside the real app, the platform will periodically select trips that become free for the rider: they see \"0 $\", while the driver receives their money from the platform.",
+        promoItem1: "On average, about every 100th trip is fully paid by the platform instead of the rider.",
+        promoItem2: "The number of the \"free\" trip is selected <strong>randomly</strong>: it can be the 98th, 100th, 101st etc., so nobody can game the system by trying to catch exactly every 100th ride.",
+        promoItem3: "The rider sees a label that they got lucky today, and the driver just receives payment as for a regular trip.",
+        promoNote: "This website only describes the principle of the promo. Actual implementation, limits and frequency of free rides will be defined by the service rules and may differ from this example.",
+        footerInfoLabel: "Information platform",
+        footerDisclaimer: "BoomBoom Taxi is an IT platform (aggregator) that connects riders and drivers to arrange trips. The service is not a carrier or taxi company and does not provide transportation services itself. All trips in the future will be agreed directly between driver and rider. In the first version of the service, only cashless payments are available.",
+        footerRules: "Terms of service",
+        footerTariffs: "Fees & commissions",
+        footerSupport: "Support"
+      }
+    };
+
+    function applyTranslations(lang) {
+      const dict = translations[lang] || translations.ru;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (!dict[key]) return;
+        // поддерживаем innerHTML для текста с <strong>
+        el.innerHTML = dict[key];
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const langButtons = document.querySelectorAll(".lang-btn");
+      langButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lang = btn.getAttribute("data-lang");
+          langButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          applyTranslations(lang);
+        });
+      });
+
+      // начальный язык — RU
+      applyTranslations("ru");
+    });
+  </script>
 </body>
 </html>
-
