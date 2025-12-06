@@ -66,16 +66,10 @@ header {
 }
 
 .logo-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 40%;
-  background: radial-gradient(circle at 30% 20%, #fef9c3 0, #fbbf24 45%, #92400e 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 18px;
-  color: #111827;
+  width: 46px;
+  height: 46px;
+  display: block;
+  border-radius: 50%;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
@@ -101,6 +95,29 @@ nav {
   gap: 16px;
   font-size: 13px;
   color: var(--text-muted);
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 12px;
+  font-size: 0.8rem;
+}
+
+.lang {
+  text-decoration: none;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.lang.active {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.lang-sep {
+  color: #6b7280;
 }
 
 nav .nav-link {
