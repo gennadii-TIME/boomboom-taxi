@@ -1,0 +1,15 @@
+{
+  "name": "BoomBoom Taxi",
+  "short_name": "BoomBoom",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "icons": [
+    {
+      "src": "/icons/bbt-logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
