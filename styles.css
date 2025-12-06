@@ -358,7 +358,7 @@ h1 .highlight {
   background: radial-gradient(circle, #4ade80, #16a34a);
 }
 
-/* Карточка водителя внутри */
+/* Карточка водителя */
 
 .driver-card {
   display: flex;
@@ -505,4 +505,3 @@ footer {
 .footer-links a:hover {
   color: var(--text-main);
 }
-
