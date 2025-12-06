@@ -2,981 +2,162 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>BoomBoom Taxi — такси, где водитель сам ставит цену</title>
+  <title>BoomBoom Taxi — честные поездки между водителями и пассажирами</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="BoomBoom Taxi — сервис, где водитель сам выставляет цену за посадку, километраж и простой, а пассажир выбирает лучшее предложение." />
-
-  <style>
-    :root {
-      --yellow: #ffc300;
-      --yellow-deep: #ffb000;
-      --black: #111111;
-      --dark: #181818;
-      --gray: #f4f4f4;
-      --accent: #ff6b00;
-      --border-radius: 16px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #333 0, #000 40%);
-      color: #f9f9f9;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ==== ШАПКА ==== */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: linear-gradient(to right, #000 0, #111 40%, #111 60%, #000 100%);
-      border-bottom: 2px solid var(--yellow);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: var(--yellow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 0 3px #000, 0 0 25px rgba(0,0,0,0.8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-badge::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(
-          135deg,
-          rgba(0,0,0,0.1) 0,
-          rgba(0,0,0,0.2) 30%,
-          rgba(0,0,0,0.6) 30%,
-          rgba(0,0,0,0.6) 70%,
-          rgba(0,0,0,0.2) 70%,
-          rgba(0,0,0,0.1) 100%
-        );
-      mix-blend-mode: multiply;
-    }
-
-    .logo-text-main {
-      font-weight: 900;
-      font-size: 16px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #000;
-      position: relative;
-      z-index: 1;
-    }
-
-    .logo-title {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .logo-title-main {
-      font-weight: 900;
-      font-size: 20px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .logo-title-sub {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      opacity: 0.85;
-      color: var(--yellow);
-    }
-
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .header-link {
-      opacity: 0.8;
-      cursor: pointer;
-      position: relative;
-      padding-bottom: 2px;
-    }
-
-    .header-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--yellow);
-      transition: width 0.2s ease;
-    }
-
-    .header-link:hover::after {
-      width: 100%;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      border: 1px solid transparent;
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-    }
-
-    .btn-outline {
-      border-color: var(--yellow);
-      background: transparent;
-      color: var(--yellow);
-    }
-
-    .btn-outline:hover {
-      background: #222;
-      transform: translateY(-1px);
-      box-shadow: 0 0 0 1px rgba(255,195,0,0.4);
-    }
-
-    .btn-primary {
-      background: var(--yellow);
-      color: #000;
-      box-shadow: 0 10px 30px rgba(255, 195, 0, 0.35);
-    }
-
-    .btn-primary:hover {
-      background: var(--yellow-deep);
-      transform: translateY(-1px);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.6);
-    }
-
-    .btn span.icon {
-      font-size: 16px;
-    }
-
-    /* ==== ШАХМАТКА ==== */
-    .checker-strip {
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #000 0,
-          #000 12px,
-          #fff 12px,
-          #fff 24px
-        );
-      height: 14px;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.8);
-      position: relative;
-      z-index: 40;
-    }
-
-    /* ==== ОСНОВНОЙ КОНТЕНТ ==== */
-    .main {
-      flex: 1;
-    }
-
-    .hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px 56px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 30px;
-      align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 24px;
-      }
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .hero-tagline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #ffdd6a;
-      opacity: 0.9;
-    }
-
-    .hero-tagline-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(255,107,0,0.8);
-    }
-
-    .hero-title {
-      font-size: clamp(30px, 4vw, 42px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.1;
-    }
-
-    .hero-title span.highlight {
-      color: var(--yellow);
-      text-shadow: 0 0 18px rgba(255,195,0,0.55);
-      border-bottom: 3px solid var(--yellow);
-      padding-bottom: 4px;
-    }
-
-    .hero-subtitle {
-      font-size: 16px;
-      max-width: 540px;
-      color: #f1f1f1;
-      opacity: 0.92;
-    }
-
-    .hero-subtitle-strong {
-      font-weight: 600;
-      color: #ffef9f;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
-      margin-bottom: 4px;
-    }
-
-    .hero-note {
-      font-size: 13px;
-      opacity: 0.8;
-      color: #dddddd;
-    }
-
-    .hero-note b {
-      color: var(--yellow);
-    }
-
-    .hero-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 16px;
-      font-size: 13px;
-      opacity: 0.9;
-    }
-
-    .hero-stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .hero-stat-label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 11px;
-      opacity: 0.7;
-    }
-
-    .hero-stat-value {
-      font-weight: 700;
-      color: var(--yellow);
-    }
-
-    /* ==== ПРАВАЯ ЧАСТЬ: СТИЛИЗОВАННОЕ ТАКСИ ==== */
-    .hero-right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .taxi-card {
-      position: relative;
-      width: 100%;
-      max-width: 420px;
-      border-radius: 32px;
-      background: linear-gradient(145deg, #222 0, #111 50%, #000 100%);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 18px 20px;
-      overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.08);
-    }
-
-    .taxi-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .taxi-card-title {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #ffea96;
-    }
-
-    .taxi-card-pill {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(255,195,0,0.1);
-      border: 1px solid rgba(255,195,0,0.6);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .taxi-card-pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--yellow);
-      box-shadow: 0 0 10px rgba(255,195,0,1);
-    }
-
-    .taxi-car {
-      position: relative;
-      margin-top: 16px;
-      margin-bottom: 18px;
-      padding: 16px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, var(--yellow) 0, #ffd700 40%, #ffb000 100%);
-      box-shadow: 0 16px 30px rgba(0,0,0,0.65);
-    }
-
-    .taxi-car-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-    }
-
-    .taxi-car-badge {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-weight: 800;
-      color: #000;
-      padding: 2px 10px;
-      background: rgba(255,255,255,0.8);
-      border-radius: 999px;
-    }
-
-    .taxi-car-id {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(0,0,0,0.7);
-    }
-
-    .taxi-car-body {
-      position: relative;
-      margin-top: 6px;
-      border-radius: 18px;
-      padding: 12px;
-      background: #000;
-      overflow: hidden;
-    }
-
-    .taxi-car-body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #000 0,
-          #000 10px,
-          #fff 10px,
-          #fff 20px
-        );
-      opacity: 0.2;
-      mix-blend-mode: screen;
-    }
-
-    .taxi-car-row {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .taxi-car-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(255,255,255,0.6);
-    }
-
-    .taxi-car-value {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--yellow);
-    }
-
-    .taxi-car-tagline {
-      position: relative;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: rgba(255,255,255,0.75);
-      text-align: center;
-      margin-top: 4px;
-    }
-
-    .taxi-car-bottom {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: rgba(0,0,0,0.8);
-    }
-
-    .taxi-wheels {
-      position: absolute;
-      left: 12%;
-      right: 12%;
-      bottom: -18px;
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-
-    .taxi-wheel {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #000;
-      box-shadow: 0 8px 14px rgba(0,0,0,0.8);
-      position: relative;
-    }
-
-    .taxi-wheel::before {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border-radius: 50%;
-      border: 3px solid #444;
-    }
-
-    .taxi-road {
-      margin-top: 28px;
-      height: 30px;
-      border-radius: 999px;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #fff 0,
-          #fff 22px,
-          transparent 22px,
-          transparent 40px
-        );
-      background-color: #222;
-      border: 2px solid #000;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.9);
-    }
-
-    .taxi-card-footer {
-      margin-top: 18px;
-      font-size: 11px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .taxi-card-footer span strong {
-      color: var(--yellow);
-    }
-
-    /* ==== БЛОК «КАК ЭТО РАБОТАЕТ» ==== */
-    .section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 10px 20px 40px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-size: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #f8f8f8;
-    }
-
-    .section-subtitle {
-      font-size: 13px;
-      opacity: 0.75;
-      max-width: 420px;
-    }
-
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    @media (max-width: 900px) {
-      .how-grid {
-        grid-template-columns: 1fr;
-      }
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    .how-card {
-      background: radial-gradient(circle at top left, rgba(255,195,0,0.16), #141414);
-      border-radius: var(--border-radius);
-      padding: 18px 16px 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.65);
-    }
-
-    .how-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 6px;
-    }
-
-    .how-title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #ffef9f;
-    }
-
-    .how-text {
-      font-size: 13px;
-      opacity: 0.87;
-      margin-bottom: 8px;
-    }
-
-    .how-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      opacity: 0.9;
-    }
-
-    .how-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--yellow);
-    }
-
-    /* ==== ПРЕИМУЩЕСТВА ==== */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    @media (max-width: 900px) {
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .benefit-card {
-      border-radius: var(--border-radius);
-      padding: 18px 16px 18px;
-      background: #101010;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.7);
-    }
-
-    .benefit-title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--yellow);
-    }
-
-    .benefit-text {
-      font-size: 13px;
-      opacity: 0.88;
-      margin-bottom: 6px;
-    }
-
-    .benefit-tag {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      opacity: 0.7;
-      color: #bbbbbb;
-    }
-
-    /* ==== ФУТЕР ==== */
-    .footer {
-      border-top: 1px solid rgba(255,255,255,0.14);
-      margin-top: 10px;
-      background: #050505;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 20px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      opacity: 0.75;
-    }
-
-    .footer-link {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      cursor: pointer;
-    }
-
-    .footer-link:hover {
-      color: var(--yellow);
-      opacity: 1;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="page">
-    <!-- ШАПКА -->
-    <header class="header">
-      <div class="header-inner">
-        <div class="logo-wrap">
-          <div class="logo-badge">
-            <span class="logo-text-main">BB</span>
-          </div>
-          <div class="logo-title">
-            <div class="logo-title-main">BoomBoom Taxi</div>
-            <div class="logo-title-sub">Yellow Cab Edition</div>
-          </div>
-        </div>
-
-        <nav class="header-nav">
-          <a href="#how" class="header-link">Как это работает</a>
-          <a href="#benefits" class="header-link">Для водителей</a>
-          <a href="#benefits" class="header-link">Для пассажиров</a>
-        </nav>
-
-        <div class="header-actions">
-          <button class="btn btn-outline">
-            <span class="icon">🚕</span> Я водитель
-          </button>
-          <button class="btn btn-primary">
-            <span class="icon">📲</span> Я пассажир
-          </button>
+    <header>
+      <div class="logo">
+        <div class="logo-mark">B</div>
+        <div>
+          <div class="logo-text-main">BoomBoom Taxi</div>
+          <div class="logo-text-sub">ВОДИТЕЛЬ САМ СТАВИТ ЦЕНУ</div>
         </div>
       </div>
+      <nav>
+        <a href="#for-drivers" class="nav-link">Водителям</a>
+        <a href="#for-riders" class="nav-link">Пассажирам</a>
+        <a href="rules.html" class="nav-link">Правила сервиса</a>
+        <div class="nav-cta">MVP • В разработке</div>
+      </nav>
     </header>
 
-    <!-- ЧЕКЕР-СТРИП -->
-    <div class="checker-strip"></div>
+    <main>
+      <!-- Левая колонка -->
+      <section>
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span>Честный маркетплейс поездок</span>
+        </div>
 
-    <main class="main">
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-left">
-          <div class="hero-tagline">
-            <span class="hero-tagline-dot"></span>
-            СЕРВИС В СТИЛЕ НЬЮ-ЙОРКСКОГО ЖЁЛТОГО ТАКСИ
+        <h1>
+          Такси, где <span class="highlight">водитель сам</span> ставит цену,
+          а пассажир выбирает лучшего.
+        </h1>
+
+        <p class="subtitle">
+          BoomBoom Taxi соединяет свободных водителей и пассажиров напрямую:
+          прозрачные цены, рейтинг влияет на комиссию, оплата — картой, наличными
+          и криптой. Без ярмарки красок — только поездки и понятные правила.
+        </p>
+
+        <div class="bullet-row">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span><strong>Стабильность:</strong> стаж и рейтинг водителя видны сразу.</span>
           </div>
-
-          <h1 class="hero-title">
-            Такси, где <span class="highlight">водитель сам ставит цену</span>,<br />
-            а пассажир выбирает лучшую офферу.
-          </h1>
-
-          <p class="hero-subtitle">
-            <span class="hero-subtitle-strong">BoomBoom Taxi</span> работает как Нью-Йоркское жёлтое такси,
-            но в цифровую эпоху: водитель сам задаёт цену за посадку, километр и минуту простоя, а пассажир
-            видит все предложения и выбирает, с кем ехать.
-          </p>
-
-          <div class="hero-actions">
-            <button class="btn btn-primary">
-              <span class="icon">📲</span> Скачать приложение
-            </button>
-            <button class="btn btn-outline">
-              <span class="icon">💼</span> Стать водителем
-            </button>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span><strong>Скорость:</strong> 30 секунд на ответ по каждому заказу.</span>
           </div>
-
-          <p class="hero-note">
-            Прозрачная формула: <b>посадка + километры + минуты ожидания</b> — без скрытых доплат.
-          </p>
-
-          <div class="hero-stats">
-            <div class="hero-stat-item">
-              <div class="hero-stat-label">МОДЕЛЬ</div>
-              <div class="hero-stat-value">Driver sets the price</div>
-            </div>
-            <div class="hero-stat-item">
-              <div class="hero-stat-label">СТИЛЬ</div>
-              <div class="hero-stat-value">New York Yellow Cab</div>
-            </div>
-            <div class="hero-stat-item">
-              <div class="hero-stat-label">ФОРМУЛА</div>
-              <div class="hero-stat-value">км + ожидание</div>
-            </div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span><strong>Гарантия:</strong> история поездок и прозрачная комиссия.</span>
           </div>
         </div>
 
-        <div class="hero-right">
-          <div class="taxi-card">
-            <div class="taxi-card-header">
-              <div class="taxi-card-title">Пример расчёта поездки</div>
-              <div class="taxi-card-pill">
-                <span class="taxi-card-pill-dot"></span>
-                LIVE TAXI METER
-              </div>
-            </div>
+        <div class="cta-row">
+          <button class="btn-primary" id="for-drivers">
+            <span class="icon">⚡</span>
+            Стать одним из первых водителей
+          </button>
+          <button class="btn-ghost" id="for-riders">
+            <span class="icon">▶</span>
+            Узнать, как работает сервис
+          </button>
+        </div>
 
-            <div class="taxi-car">
-              <div class="taxi-car-top">
-                <div class="taxi-car-badge">OFFICIAL YELLOW CAB</div>
-                <div class="taxi-car-id">BB-NYC · 7N42</div>
-              </div>
-
-              <div class="taxi-car-body">
-                <div class="taxi-car-row">
-                  <span class="taxi-car-label">Посадка</span>
-                  <span class="taxi-car-value">2.00 $</span>
-                </div>
-                <div class="taxi-car-row">
-                  <span class="taxi-car-label">Дистанция</span>
-                  <span class="taxi-car-value">10 км × 0.50 $</span>
-                </div>
-                <div class="taxi-car-row">
-                  <span class="taxi-car-label">Ожидание</span>
-                  <span class="taxi-car-value">7 мин × 0.10 $</span>
-                </div>
-                <div class="taxi-car-tagline">
-                  DRIVER SETS PRICE · PASSENGER CHOOSES
-                </div>
-              </div>
-
-              <div class="taxi-car-bottom">
-                <span>Итого: <b>7.70 $</b></span>
-                <span>без скрытых комиссий</span>
-              </div>
-
-              <div class="taxi-wheels">
-                <div class="taxi-wheel"></div>
-                <div class="taxi-wheel"></div>
-              </div>
-            </div>
-
-            <div class="taxi-road"></div>
-
-            <div class="taxi-card-footer">
-              <span><strong>Режим ожидания</strong> включается в пробках автоматически.</span>
-              <span>NYC style · BoomBoom Taxi</span>
-            </div>
+        <div class="trust-row">
+          <div class="trust-key">
+            <span class="dot"></span>
+            <span class="label">Контроль качества</span>
+          </div>
+          <div class="trust-badges">
+            <div class="trust-pill">Стаж водителя и количество поездок</div>
+            <div class="trust-pill">Рейтинг влияет на комиссию</div>
+            <div class="trust-pill">Блокировка проблемных аккаунтов</div>
           </div>
         </div>
       </section>
 
-      <!-- КАК ЭТО РАБОТАЕТ -->
-      <section class="section" id="how">
-        <div class="section-header">
-          <h2 class="section-title">Как это работает</h2>
-          <p class="section-subtitle">
-            Всё по-нью-йоркски просто: пассажир поднимает «руку» в приложении, водители делают офферы,
-            и каждый выбирает свои идеальные условия.
-          </p>
-        </div>
-
-        <div class="how-grid">
-          <div class="how-card">
-            <div class="how-label">Шаг 1 · Пассажир</div>
-            <div class="how-title">Создаёт запрос на поездку</div>
-            <p class="how-text">
-              Указываете точку A и точку B, видите примерное расстояние и примерный бюджет.
-              Запрос получают ближайшие водители.
-            </p>
-            <div class="how-badge">
-              <span class="how-badge-dot"></span>
-              Видно примерную цену до заказа
+      <!-- Правая колонка: виджет заказов -->
+      <section class="right">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Подбор водителя</div>
+            <div class="status-dot">
+              <span class="dot"></span>
+              <span>Онлайн водители рядом</span>
             </div>
           </div>
 
-          <div class="how-card">
-            <div class="how-label">Шаг 2 · Водитель</div>
-            <div class="how-title">Сам выставляет цену</div>
-            <p class="how-text">
-              Водитель задаёт свою цену за посадку, километр и минуту простоя. Система считает
-              ориентировочную стоимость для этой поездки.
-            </p>
-            <div class="how-badge">
-              <span class="how-badge-dot"></span>
-              Рейтинг ↓ комиссия сервиса
+          <div class="driver-card">
+            <div class="driver-main-row">
+              <div class="driver-info">
+                <div class="driver-avatar">A</div>
+                <div>
+                  <div class="driver-text-main">Алексей • ★ 4.92</div>
+                  <div class="driver-text-sub">Стаж: 2 года 3 месяца • 1 248 поездок</div>
+                </div>
+              </div>
+              <div class="driver-price">
+                <div class="driver-price-main">4.80 €</div>
+                <div class="driver-price-sub">чистыми водителю: 4.32 €</div>
+              </div>
+            </div>
+            <div class="driver-meta-row">
+              <span>Volkswagen Passat • Синий</span>
+              <span>Прибытие: 4 мин</span>
+            </div>
+            <div class="badge-row">
+              <div class="badge primary">Водитель заранее выставил тариф</div>
+              <div class="badge">Изменение маршрута по пути</div>
+              <div class="badge">Оплата: карта / кэш / крипта</div>
             </div>
           </div>
 
-          <div class="how-card">
-            <div class="how-label">Шаг 3 · Выбор</div>
-            <div class="how-title">Пассажир выбирает оффер</div>
-            <p class="how-text">
-              Пассажир видит несколько предложений: цена, рейтинг, авто, время подачи.
-              Выбирает лучшее соотношение «цена / комфорт / рейтинг».
-            </p>
-            <div class="how-badge">
-              <span class="how-badge-dot"></span>
-              Максимум контроля · минимум сюрпризов
+          <div class="features">
+            <div class="feature">
+              <strong>Водителям</strong>
+              Свой тариф, снижение комиссии при высоком рейтинге и стаже.
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ПРЕИМУЩЕСТВА -->
-      <section class="section" id="benefits">
-        <div class="section-header">
-          <h2 class="section-title">Почему это удобно</h2>
-          <p class="section-subtitle">
-            Модель БумБум Такси построена на честной формуле и свободном рынке: каждый сам выбирает
-            условия, как на оживлённой Нью-Йоркской улице с жёлтыми такси.
-          </p>
-        </div>
-
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-tag">Для водителей</div>
-            <h3 class="benefit-title">Своя цена, свой стиль</h3>
-            <p class="benefit-text">
-              Вы сами решаете, сколько стоит ваша минута и каждый километр. Гибкие тарифы: часы пик,
-              ночной город, трасса — всё под вашим контролем.
-            </p>
-            <p class="benefit-text">
-              Чем выше рейтинг — тем ниже комиссия сервиса. Ваш сервис и честность реально окупаются.
-            </p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-tag">Для пассажиров</div>
-            <h3 class="benefit-title">Выбор вместо сюрпризов</h3>
-            <p class="benefit-text">
-              Несколько офферов от разных водителей: вы видите цену, рейтинг, автомобиль и
-              примерное время ожидания до того, как нажать «Поехать».
-            </p>
-            <p class="benefit-text">
-              Чёткая формула: посадка + км + ожидание. Пробка — это минуты, движение — это километры.
-            </p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-tag">Для города</div>
-            <h3 class="benefit-title">Цифровое жёлтое такси</h3>
-            <p class="benefit-text">
-              Культура жёлтого такси Нью-Йорка — в мобильном приложении: узнаваемый стиль,
-              честные цены и максимальная свобода для водителей.
-            </p>
-            <p class="benefit-text">
-              Сервис прозрачных поездок, где выигрывают и те, кто за рулём, и те, кто на заднем сиденье.
-            </p>
+            <div class="feature">
+              <strong>Пассажирам</strong>
+              Выбор по цене, рейтингу, стажу и времени прибытия.
+            </div>
+            <div class="feature">
+              <strong>Оплата</strong>
+              Наличные, карта и криптовалюта в одном приложении.
+            </div>
+            <div class="feature">
+              <strong>Маршрут</strong>
+              Маршрут можно изменить во время поездки по договорённости.
+            </div>
+            <div class="feature">
+              <strong>Безопасность</strong>
+              История поездок, блокировки и прозрачные правила сервиса.
+            </div>
+            <div class="feature">
+              <strong>Скорость</strong>
+              30 секунд на ответ. Три пропуска подряд — минус рейтинг.
+            </div>
           </div>
         </div>
       </section>
     </main>
-
-    <!-- ФУТЕР -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <div>© BoomBoom Taxi · NYC Yellow Cab Inspired</div>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;">
-          <span class="footer-link">Правила сервиса</span>
-          <span class="footer-link">Тарифы и комиссии</span>
-          <span class="footer-link">Поддержка</span>
-        </div>
-      </div>
-    </footer>
   </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© BoomBoom Taxi, 2025. Платформа в разработке (MVP).</div>
+      <div class="footer-links">
+        <a href="rules.html">Правила сервиса</a>
+        <a href="#for-drivers">Водителям</a>
+        <a href="#for-riders">Пассажирам</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
