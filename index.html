@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>BoomBoom Taxi — честные поездки между водителями и пассажирами</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/svg+xml" href="/icons/bbt-logo.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoomBoom Taxi — водитель сам ставит цену</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="icons/bbt-logo.svg">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#050816">
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="BoomBoom Taxi — сервис, где водитель сам ставит цену, а пассажир выбирает честные поездки.">
 </head>
 <body>
   <div class="page">
@@ -16,15 +17,9 @@
         <img src="/icons/bbt-logo.svg" alt="Логотип BoomBoom Taxi" class="logo-mark" />
         <div>
           <div class="logo-text-main">BoomBoom Taxi</div>
-          <div class="logo-text-sub">ВОДИТЕЛЬ САМ СТАВИТ ЦЕНУ</div>
+          <div class="logo-text-sub">Водитель сам ставит цену</div>
         </div>
-      </div>
-
-      <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      </a>
 
       <nav class="site-nav">
         <a href="drivers.html" class="nav-link">Водителям</a>
@@ -46,149 +41,56 @@
           <span class="eyebrow-dot"></span>
           <span>Честный маркетплейс поездок</span>
         </div>
-
-        <h1>
-          Такси, где <span class="highlight">водитель сам</span> ставит цену,
-          а пассажир выбирает лучшего.
-        </h1>
-
-        <p class="subtitle">
-          BoomBoom Taxi соединяет свободных водителей и пассажиров напрямую:
-          прозрачные цены, рейтинг влияет на комиссию, оплата — картой, наличными
-          и криптой. Без ярмарки красок — только поездки и понятные правила.
-        </p>
-
-        <div class="bullet-row">
-          <div class="pill">
-            <span class="pill-dot"></span>
-            <span><strong>Стабильность:</strong> стаж и рейтинг водителя видны сразу.</span>
-          </div>
-          <div class="pill">
-            <span class="pill-dot"></span>
-            <span><strong>Скорость:</strong> 30 секунд на ответ по каждому заказу.</span>
-          </div>
-          <div class="pill">
-            <span class="pill-dot"></span>
-            <span><strong>Гарантия:</strong> история поездок и прозрачная комиссия.</span>
-          </div>
-        </div>
-
-        <div class="cta-row">
-          <button class="btn-primary" id="for-drivers">
-            <span class="icon">⚡</span>
-            Стать одним из первых водителей
-          </button>
-          <button class="btn-ghost" id="for-riders">
-            <span class="icon">▶</span>
-            Узнать, как работает сервис
-          </button>
-        </div>
-
-        <div class="trust-row">
-          <div class="trust-key">
-            <span class="dot"></span>
-            <span class="label">Контроль качества</span>
-          </div>
-          <div class="trust-badges">
-            <div class="trust-pill">Стаж водителя и количество поездок</div>
-            <div class="trust-pill">Рейтинг влияет на комиссию</div>
-            <div class="trust-pill">Блокировка проблемных аккаунтов</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Правая колонка: виджет заказов -->
-      <section class="right">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">Подбор водителя</div>
-            <div class="status-dot">
-              <span class="dot"></span>
-              <span>Онлайн водители рядом</span>
-            </div>
-          </div>
-
-          <div class="driver-card">
-            <div class="driver-main-row">
-              <div class="driver-info">
-                <div class="driver-avatar">A</div>
-                <div>
-                  <div class="driver-text-main">Алексей • ★ 4.92</div>
-                  <div class="driver-text-sub">Стаж: 2 года 3 месяца • 1 248 поездок</div>
-                </div>
-              </div>
-              <div class="driver-price">
-                <div class="driver-price-main">4.80 €</div>
-                <div class="driver-price-sub">чистыми водителю: 4.32 €</div>
-              </div>
-            </div>
-            <div class="driver-meta-row">
-              <span>Volkswagen Passat • Синий</span>
-              <span>Прибытие: 4 мин</span>
-            </div>
-            <div class="badge-row">
-              <div class="badge primary">Водитель заранее выставил тариф</div>
-              <div class="badge">Изменение маршрута по пути</div>
-              <div class="badge">Оплата: карта / кэш / крипта</div>
-            </div>
-          </div>
-
-          <div class="features">
-            <div class="feature">
-              <strong>Водителям</strong>
-              Свой тариф, снижение комиссии при высоком рейтинге и стаже.
-            </div>
-            <div class="feature">
-              <strong>Пассажирам</strong>
-              Выбор по цене, рейтингу, стажу и времени прибытия.
-            </div>
-            <div class="feature">
-              <strong>Оплата</strong>
-              Наличные, карта и криптовалюта в одном приложении.
-            </div>
-            <div class="feature">
-              <strong>Маршрут</strong>
-              Маршрут можно изменить во время поездки по договорённости.
-            </div>
-            <div class="feature">
-              <strong>Безопасность</strong>
-              История поездок, блокировки и прозрачные правила сервиса.
-            </div>
-            <div class="feature">
-              <strong>Скорость</strong>
-              30 секунд на ответ. Три пропуска подряд — минус рейтинг.
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <footer>
-    <div class="footer-inner">
-      <div>© BoomBoom Taxi, 2025. Платформа в разработке (MVP).</div>
-      <div class="footer-links">
-        <a href="rules.html">Правила сервиса</a>
-        <a href="drivers.html">Водителям</a>
-        <a href="passengers.html">Пассажирам</a>
-      </div>
+      </nav>
     </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1 class="hero-title">Такси, где водитель сам управляет ценой</h1>
+          <p class="hero-subtitle">BoomBoom Taxi создаёт прозрачный рынок: водитель выставляет тариф, пассажир выбирает лучшее предложение. Без навязанной динамики цен, с честными правилами и защитой обеих сторон.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="drivers.html">Стать водителем</a>
+            <a class="btn btn-secondary" href="passengers.html">Найти поездку</a>
+          </div>
+        </div>
+        <div class="gold-card">
+          <h3>Карточка водителя</h3>
+          <ul>
+            <li><strong>Текущий тариф:</strong> 0.50 € / км · 0.10 € / мин</li>
+            <li><strong>Стаж:</strong> 6 лет · 8 200 поездок</li>
+            <li><strong>Рейтинг:</strong> 4.94 · Комиссия уменьшается при высоком рейтинге</li>
+            <li><strong>Оплата:</strong> карты, наличные, криптовалюта</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <h2 class="section-title">Стабильность, скорость и гарантия</h2>
+        <div class="card-grid">
+          <div class="gold-card">
+            <h3>Стабильность</h3>
+            <p>Без скрытых алгоритмов. Вы сами меняете цену в любой момент, а пассажир видит честный тариф.</p>
+          </div>
+          <div class="gold-card">
+            <h3>Скорость</h3>
+            <p>Мгновенные запросы на поездку. Есть 30 секунд, чтобы принять заказ. Опоздали трижды — рейтинг чуть снижается.</p>
+          </div>
+          <div class="gold-card">
+            <h3>Гарантия</h3>
+            <p>Прозрачные правила: защита водителя, дисциплина пассажиров, автоматический пересчёт стоимости при изменении маршрута.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © BoomBoom Taxi, 2025. Платформа в разработке (MVP).
   </footer>
-
-  <script>
-    (function () {
-      const header = document.querySelector('.site-header');
-      if (!header) return;
-      const toggle = header.querySelector('.nav-toggle');
-      const nav = header.querySelector('.site-nav');
-      if (!toggle || !nav) return;
-
-      toggle.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('is-open');
-        toggle.classList.toggle('is-open', isOpen);
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    })();
-  </script>
 </body>
 </html>
