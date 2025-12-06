@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <title>BoomBoom Taxi — честные поездки между водителями и пассажирами</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/icons/bbt-logo.svg">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#050816">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="page">
-    <header>
+    <header class="site-header">
       <div class="logo">
         <div class="logo-mark">B</div>
         <div>
@@ -16,9 +19,16 @@
           <div class="logo-text-sub">ВОДИТЕЛЬ САМ СТАВИТ ЦЕНУ</div>
         </div>
       </div>
-      <nav>
-        <a href="#for-drivers" class="nav-link">Водителям</a>
-        <a href="#for-riders" class="nav-link">Пассажирам</a>
+
+      <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav">
+        <a href="drivers.html" class="nav-link">Водителям</a>
+        <a href="passengers.html" class="nav-link">Пассажирам</a>
         <a href="rules.html" class="nav-link">Правила сервиса</a>
         <div class="nav-cta">MVP • В разработке</div>
       </nav>
@@ -154,10 +164,26 @@
       <div>© BoomBoom Taxi, 2025. Платформа в разработке (MVP).</div>
       <div class="footer-links">
         <a href="rules.html">Правила сервиса</a>
-        <a href="#for-drivers">Водителям</a>
-        <a href="#for-riders">Пассажирам</a>
+        <a href="drivers.html">Водителям</a>
+        <a href="passengers.html">Пассажирам</a>
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+      const toggle = header.querySelector('.nav-toggle');
+      const nav = header.querySelector('.site-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        toggle.classList.toggle('is-open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    })();
+  </script>
 </body>
 </html>

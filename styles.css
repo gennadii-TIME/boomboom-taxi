@@ -358,7 +358,7 @@ h1 .highlight {
   background: radial-gradient(circle, #4ade80, #16a34a);
 }
 
-/* Карточка водителя внутри */
+/* Карточка водителя */
 
 .driver-card {
   display: flex;
@@ -506,3 +506,147 @@ footer {
   color: var(--text-main);
 }
 
+/* Обновлённый header под бургер-меню */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0 20px;
+}
+
+/* Кнопка-бургер */
+
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 38px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background-color: rgba(15, 23, 42, 0.95);
+  cursor: pointer;
+  padding: 7px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background-color: var(--text-main);
+  transition: transform 0.18s ease, opacity 0.18s ease, translate 0.18s ease;
+}
+
+/* Анимация бургера в крест */
+
+.nav-toggle.is-open span:nth-child(1) {
+  transform: rotate(45deg);
+  translate: 0 4px;
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+  transform: rotate(-45deg);
+  translate: 0 -4px;
+}
+
+/* Базовый nav уже описан выше, дополняем мобильным поведением для .site-nav */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Адаптив: планшеты и телефоны */
+
+@media (max-width: 900px) {
+  .page {
+    padding-inline: 14px;
+  }
+
+  .site-header {
+    gap: 10px;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    position: absolute;
+    inset: 56px 16px auto 16px;
+    border-radius: 16px;
+    padding: 10px 12px;
+    background-color: rgba(15, 23, 42, 0.98);
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-soft);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 20;
+  }
+
+  .site-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-cta {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  main {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 4px;
+  }
+
+  .features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Адаптив: малые телефоны */
+
+@media (max-width: 520px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .features {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card {
+    padding: 14px 12px 16px;
+  }
+
+  .driver-main-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .driver-price {
+    text-align: left;
+  }
+}
