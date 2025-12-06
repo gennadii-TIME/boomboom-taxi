@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BoomBoom Taxi — fair trips between drivers and passengers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="../icons/bbt-logo.svg">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#050816">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="logo">
+        <img src="../icons/bbt-logo.svg" alt="BoomBoom Taxi logo" class="logo-mark" />
+        <div>
+          <div class="logo-text-main">BoomBoom Taxi</div>
+          <div class="logo-text-sub">DRIVER SETS THE PRICE</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav">
+        <a href="drivers.html" class="nav-link">For drivers</a>
+        <a href="passengers.html" class="nav-link">For passengers</a>
+        <a href="rules.html" class="nav-link">Service rules</a>
+        <div class="nav-cta">MVP • In development</div>
+        <div class="lang-switch">
+          <a href="../index.html" class="lang">RU</a>
+          <span class="lang-sep">/</span>
+          <a href="index.html" class="lang active">EN</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Left column -->
+      <section>
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span>Fair marketplace for rides</span>
+        </div>
+
+        <h1>
+          A taxi where <span class="highlight">the driver sets</span> the price
+          and the passenger chooses the best option.
+        </h1>
+
+        <p class="subtitle">
+          BoomBoom Taxi connects independent drivers and passengers directly:
+          transparent prices, rating impacts the commission, and payments work
+          with cards, cash, and crypto. No noise — just trips and clear rules.
+        </p>
+
+        <div class="bullet-row">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span><strong>Reliability:</strong> experience and rating are visible upfront.</span>
+          </div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span><strong>Speed:</strong> 30 seconds to respond to each request.</span>
+          </div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span><strong>Assurance:</strong> trip history and transparent commission.</span>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn-primary" id="for-drivers">
+            <span class="icon">⚡</span>
+            Become a BoomBoom Taxi driver
+          </button>
+          <button class="btn-ghost" id="for-riders">
+            <span class="icon">▶</span>
+            Learn how the service works
+          </button>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-key">
+            <span class="dot"></span>
+            <span class="label">Quality control</span>
+          </div>
+          <div class="trust-badges">
+            <div class="trust-pill">Driver tenure and trip count</div>
+            <div class="trust-pill">Rating affects commission</div>
+            <div class="trust-pill">Blocking problematic accounts</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right column: order widget -->
+      <section class="right">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Driver selection</div>
+            <div class="status-dot">
+              <span class="dot"></span>
+              <span>Drivers online nearby</span>
+            </div>
+          </div>
+
+          <div class="driver-card">
+            <div class="driver-main-row">
+              <div class="driver-info">
+                <div class="driver-avatar">A</div>
+                <div>
+                  <div class="driver-text-main">Alexey • ★ 4.92</div>
+                  <div class="driver-text-sub">Experience: 2 years 3 months • 1,248 trips</div>
+                </div>
+              </div>
+              <div class="driver-price">
+                <div class="driver-price-main">4.80 €</div>
+                <div class="driver-price-sub">net to driver: 4.32 €</div>
+              </div>
+            </div>
+            <div class="driver-meta-row">
+              <span>Volkswagen Passat • Blue</span>
+              <span>Arrival: 4 min</span>
+            </div>
+            <div class="badge-row">
+              <div class="badge primary">Driver set the fare in advance</div>
+              <div class="badge">Route can be changed on the way</div>
+              <div class="badge">Payment: card / cash / crypto</div>
+            </div>
+          </div>
+
+          <div class="features">
+            <div class="feature">
+              <strong>For drivers</strong>
+              Your own rate with lower commission for great rating and tenure.
+            </div>
+            <div class="feature">
+              <strong>For passengers</strong>
+              Choose by price, rating, tenure, and arrival time.
+            </div>
+            <div class="feature">
+              <strong>Payments</strong>
+              Cash, card, and cryptocurrency in one app.
+            </div>
+            <div class="feature">
+              <strong>Route</strong>
+              Routes can change mid-trip by agreement.
+            </div>
+            <div class="feature">
+              <strong>Safety</strong>
+              Trip history, blocks, and transparent service rules.
+            </div>
+            <div class="feature">
+              <strong>Speed</strong>
+              30 seconds to respond. Three skips in a row drop rating.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© BoomBoom Taxi, 2025. Platform in development (MVP).</div>
+      <div class="footer-links">
+        <a href="rules.html">Service rules</a>
+        <a href="drivers.html">For drivers</a>
+        <a href="passengers.html">For passengers</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+      const toggle = header.querySelector('.nav-toggle');
+      const nav = header.querySelector('.site-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        toggle.classList.toggle('is-open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    })();
+  </script>
+</body>
+</html>

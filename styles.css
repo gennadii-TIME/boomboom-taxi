@@ -51,12 +51,12 @@ a {
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
 }
 
-.site-header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 14px 20px;
+.logo-mark {
+  width: 46px;
+  height: 46px;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
 .logo {
@@ -70,8 +70,71 @@ a {
 
 .logo-text {
   display: flex;
-  flex-direction: column;
-  line-height: 1.2;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 12px;
+  font-size: 0.8rem;
+}
+
+.lang {
+  text-decoration: none;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.lang.active {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.lang-sep {
+  color: #6b7280;
+}
+
+nav .nav-link {
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+}
+
+nav .nav-link:hover {
+  border-color: var(--border-soft);
+  color: var(--text-main);
+}
+
+.nav-cta {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--primary-soft);
+  background: linear-gradient(90deg, rgba(251, 191, 36, 0.16), transparent);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+/* Основной layout */
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .logo-icon {
