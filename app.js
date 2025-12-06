@@ -63,15 +63,17 @@ const translations = {
     'apps.badge.appstore': 'Скоро в App Store',
     'apps.badge.play': 'Скоро в Google Play',
     'contacts.title': 'Свяжитесь с нами',
-    'contacts.email': 'support@boomboom.taxi',
+    'contacts.email': 'Контактные данные будут добавлены позже.',
     'contacts.phone.label': 'Телефон',
-    'contacts.phone.value': '+372 5555 0000',
+    'contacts.phone.value': 'Контакты появятся позже.',
     'contacts.office.label': 'Офис',
     'contacts.office.value': 'Tallinn, Estonia',
     'footer.copy': '© BoomBoom Taxi, 2025. Platform in development (MVP).',
     'footer.rules': 'Правила сервиса',
     'footer.privacy': 'Политика конфиденциальности',
-    'footer.contact': 'contact@boomboom.taxi',
+    'footer.contact': 'Контакты появятся позже.',
+    'theme.dark': 'Тёмная',
+    'theme.light': 'Светлая',
     'drivers.pill': 'Контроль цены и прозрачные поездки',
     'drivers.title': 'Информация для водителей',
     'drivers.subtitle': 'Вы ставите тариф, принимаете заказы и следите за комиссией. Пассажир заранее знает цену и видит ваш стаж.',
@@ -235,15 +237,17 @@ const translations = {
     'apps.badge.appstore': 'Coming soon on App Store',
     'apps.badge.play': 'Coming soon on Google Play',
     'contacts.title': 'Contact us',
-    'contacts.email': 'support@boomboom.taxi',
+    'contacts.email': 'Contact details will be added later.',
     'contacts.phone.label': 'Phone',
-    'contacts.phone.value': '+372 5555 0000',
+    'contacts.phone.value': 'Contact details will be added later.',
     'contacts.office.label': 'Office',
     'contacts.office.value': 'Tallinn, Estonia',
     'footer.copy': '© BoomBoom Taxi, 2025. Platform in development (MVP).',
     'footer.rules': 'Service Rules',
     'footer.privacy': 'Privacy Policy',
-    'footer.contact': 'contact@boomboom.taxi',
+    'footer.contact': 'Contact details will be added later.',
+    'theme.dark': 'Dark',
+    'theme.light': 'Light',
     'drivers.pill': 'Price control and transparent trips',
     'drivers.title': 'Driver information',
     'drivers.subtitle': 'Set your fare, accept requests, and track commission. Passengers know the price and see your experience.',
@@ -407,15 +411,17 @@ const translations = {
     'apps.badge.appstore': 'Drīzumā App Store',
     'apps.badge.play': 'Drīzumā Google Play',
     'contacts.title': 'Sazinieties ar mums',
-    'contacts.email': 'support@boomboom.taxi',
+    'contacts.email': 'Kontaktinformācija tiks pievienota vēlāk.',
     'contacts.phone.label': 'Tālrunis',
-    'contacts.phone.value': '+372 5555 0000',
+    'contacts.phone.value': 'Kontaktinformācija būs pieejama drīz.',
     'contacts.office.label': 'Birojs',
     'contacts.office.value': 'Tallina, Igaunija',
     'footer.copy': '© BoomBoom Taxi, 2025. Platforma izstrādē (MVP).',
     'footer.rules': 'Pakalpojuma noteikumi',
     'footer.privacy': 'Privātuma politika',
-    'footer.contact': 'contact@boomboom.taxi',
+    'footer.contact': 'Kontakti tiks pievienoti vēlāk.',
+    'theme.dark': 'Tumšā',
+    'theme.light': 'Gaišā',
     'drivers.pill': 'Cenas kontrole un caurspīdīgi braucieni',
     'drivers.title': 'Informācija vadītājiem',
     'drivers.subtitle': 'Jūs nosakāt tarifu, pieņemat pieprasījumus un redzat komisiju. Pasažieris iepriekš zina cenu un jūsu stāžu.',
@@ -563,7 +569,31 @@ const setupBurger = () => {
   });
 };
 
+const setTheme = (theme) => {
+  const body = document.body;
+  const next = theme === 'light' ? 'light' : 'dark';
+  body.classList.remove('light-theme', 'dark-theme');
+  body.classList.add(`${next}-theme`);
+  localStorage.setItem('bbt-theme', next);
+  document.querySelectorAll('.theme-btn').forEach((btn) => {
+    const isActive = btn.dataset.theme === next;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+};
+
+const setupTheme = () => {
+  const saved = localStorage.getItem('bbt-theme');
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  const initial = saved || (prefersLight ? 'light' : 'dark');
+  setTheme(initial);
+  document.querySelectorAll('.theme-btn').forEach((btn) => {
+    btn.addEventListener('click', () => setTheme(btn.dataset.theme));
+  });
+};
+
 window.addEventListener('DOMContentLoaded', () => {
   setupBurger();
+  setupTheme();
   setupLanguage();
 });

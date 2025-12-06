@@ -1,193 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Service rules — BoomBoom Taxi</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title.rules">BoomBoom Taxi — Service Rules & Disclaimer</title>
+  <meta name="description" data-i18n="meta.desc.rules" content="BoomBoom Taxi terms: driver and passenger duties, payments, rating, and privacy.">
+  <meta property="og:title" data-i18n="meta.title.rules" content="BoomBoom Taxi — Service Rules & Disclaimer">
+  <meta property="og:description" data-i18n="meta.desc.rules" content="BoomBoom Taxi terms: driver and passenger duties, payments, rating, and privacy.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../icons/bbt-logo.svg">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#050816">
-  <link rel="stylesheet" href="../styles.css" />
 </head>
-<body>
-  <div class="page">
-    <!-- HEADER -->
-    <header class="site-header">
-      <div class="logo">
-        <img src="../icons/bbt-logo.svg" alt="BoomBoom Taxi logo" class="logo-mark" />
-        <div>
-          <div class="logo-text-main">BoomBoom Taxi</div>
-          <div class="logo-text-sub">DRIVER SETS THE PRICE</div>
+<body class="page dark-theme">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="BoomBoom Taxi">
+        <img src="../icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi" />
+        <div class="logo-text">
+          <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+          <span class="logo-text-sub" data-i18n="brand.tagline">Drivers set the price</span>
         </div>
-      </div>
-
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      </a>
+      <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
-
       <nav class="site-nav">
-        <a href="drivers.html" class="nav-link">For drivers</a>
-        <a href="passengers.html" class="nav-link">For passengers</a>
-        <a href="rules.html" class="nav-link">Service rules</a>
-        <div class="nav-cta">MVP • In development</div>
-        <div class="lang-switch">
-          <a href="../rules.html" class="lang">RU</a>
-          <span class="lang-sep">/</span>
-          <a href="rules.html" class="lang active">EN</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="drivers.html" class="nav-link" data-i18n="nav.drivers">Drivers</a>
+        <a href="passengers.html" class="nav-link" data-i18n="nav.passengers">Passengers</a>
+        <a href="rules.html" class="nav-link active" data-i18n="nav.rules">Service Rules</a>
+        <a href="#contacts" class="nav-link" data-i18n="nav.contacts">Contacts</a>
+        <div class="nav-controls">
+          <div class="theme-toggle" role="group" aria-label="Theme toggle">
+            <button class="theme-btn active" data-theme="dark" aria-pressed="true" data-i18n="theme.dark">Dark</button>
+            <button class="theme-btn" data-theme="light" aria-pressed="false" data-i18n="theme.light">Light</button>
+          </div>
+          <div class="lang-switch" aria-label="Language switcher">
+            <button class="lang-btn" data-lang="ru">RU</button>
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="lv">LV</button>
+          </div>
         </div>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="right" style="grid-column: 1 / -1;">
-        <div class="card">
-          <div class="card-header">
-          <div class="card-title">BoomBoom Taxi service rules</div>
-          </div>
+  <main>
+    <section class="section hero">
+      <div class="container">
+        <div class="pill" data-i18n="rules.pill">Service Rules & Disclaimer</div>
+        <h1 class="hero-title" data-i18n="rules.title">BoomBoom Taxi Service Rules</h1>
+        <p class="hero-subtitle" data-i18n="rules.subtitle">Terms for drivers and passengers, payment rules, rating, and privacy.</p>
+      </div>
+    </section>
 
-          <p class="subtitle" style="max-width: 680px;">
-            These rules exist to protect the driver, their car, and their income
-            first. By using BoomBoom Taxi, passenger and driver confirm agreement
-            with the terms below.
-          </p>
+    <section class="section light">
+      <div class="container legal-grid">
+        <div>
+          <h2 data-i18n="rules.general.title">General terms</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.general.item1">BoomBoom Taxi is a ride-matching platform; it is not a carrier.</li>
+            <li data-i18n="rules.general.item2">Using the service means you agree to rules and privacy policy.</li>
+            <li data-i18n="rules.general.item3">The platform may update rules with notice to users.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="rules.drivers.title">Driver responsibilities</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.drivers.item1">Provide valid documents and keep the car safe.</li>
+            <li data-i18n="rules.drivers.item2">Follow the agreed route and inform about changes.</li>
+            <li data-i18n="rules.drivers.item3">Respect passengers and follow safety rules.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="rules.passengers.title">Passenger responsibilities</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.passengers.item1">Provide accurate route and be on time for pickup.</li>
+            <li data-i18n="rules.passengers.item2">Follow behavior rules and do not distract the driver.</li>
+            <li data-i18n="rules.passengers.item3">Follow payment instructions and respect the vehicle.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="rules.platform.title">Platform responsibilities</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.platform.item1">The platform provides infrastructure and support but is not liable for user actions.</li>
+            <li data-i18n="rules.platform.item2">BoomBoom Taxi can suspend access for rule violations.</li>
+            <li data-i18n="rules.platform.item3">In disputes the platform helps collect information.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="rules.payment.title">Payment rules</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.payment.item1">At launch only cashless payments are allowed.</li>
+            <li data-i18n="rules.payment.item2">Route changes recalculate the total.</li>
+            <li data-i18n="rules.payment.item3">Commission is charged automatically; drivers receive the agreed amount.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="rules.rating.title">Rating system & blocking</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.rating.item1">Rating affects driver commission and request priority.</li>
+            <li data-i18n="rules.rating.item2">Mutual blocks: 1 week / 1 month / 6 months / 1 year / forever.</li>
+            <li data-i18n="rules.rating.item3">Skipping 3 requests in a row decreases rating by 0.1.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="rules.privacy.title">Data and privacy</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.privacy.item1">Personal data is used to operate the service and keep users safe.</li>
+            <li data-i18n="rules.privacy.item2">Data may be shared with partners only legally and to deliver services.</li>
+            <li data-i18n="rules.privacy.item3">Users can request deletion or correction of their data.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
 
-          <div class="features" style="grid-template-columns: 1fr;">
-            <div class="feature">
-              <strong>1. Role of the service</strong>
-              BoomBoom Taxi is a technology platform connecting passengers and
-              drivers. The service is not a transportation company and does not
-              take responsibility for vehicle condition or traffic compliance —
-              the driver is responsible. The trip is provided by the driver in
-              their own car.
-            </div>
+  <section id="contacts" class="section">
+    <div class="container grid three">
+        <div class="feature-card">
+          <h3 data-i18n="contacts.title">Contact us</h3>
+          <p data-i18n="contacts.email">Contact details will be added later.</p>
+        </div>
+        <div class="feature-card">
+          <h3 data-i18n="contacts.phone.label">Phone</h3>
+          <p data-i18n="contacts.phone.value">Contact details will be added later.</p>
+        </div>
+        <div class="feature-card">
+          <h3 data-i18n="contacts.office.label">Office</h3>
+          <p data-i18n="contacts.office.value">Tallinn, Estonia</p>
+      </div>
+    </div>
+  </section>
 
-            <div class="feature">
-              <strong>2. Passenger responsibility for the car</strong>
-              The driver’s car is personal property and can be expensive.
-              Passengers must treat the interior and exterior with care: do not
-              stain, scratch, or break interior elements or equipment; do not
-              damage belts, handles, headrests, or other parts. Any damage must
-              be fully compensated.
-            </div>
-
-            <div class="feature">
-              <strong>3. Food, drinks, and cleanliness</strong>
-              During the trip, food or drinks that can spill, smell, or make a
-              mess (coffee, juices, fast food, etc.) are not allowed. The driver
-              may ask to put food/drinks away before the ride or refuse the trip.
-              If cleaning or detailing is needed because of the passenger (spills,
-              dirty shoes on seats, trash), the passenger must cover cleaning
-              costs and any downtime.
-            </div>
-
-            <div class="feature">
-              <strong>4. Traveling with animals</strong>
-              Animals are allowed only if they are in a carrier/container or on a
-              protective mat/cover. The driver may refuse the trip if the animal
-              is without a carrier, heavily shedding, wet, dirty, or could damage
-              the interior. If the animal causes mess or damage, the passenger is
-              fully responsible and compensates losses.
-            </div>
-
-            <div class="feature">
-              <strong>5. Driver’s right to refuse a trip</strong>
-              The driver may decline an order if the passenger is aggressive,
-              heavily intoxicated, carrying prohibited items, bringing an animal
-              without a carrier, or if there is a risk to the interior or safety.
-              The driver can refuse without detailed explanation if they see risk.
-            </div>
-
-            <div class="feature">
-              <strong>6. Payment and protecting driver income</strong>
-              The passenger must pay according to the driver’s rate and service
-              rules. Payment can be cash, card, or cryptocurrency. The driver
-              receives the amount minus platform commission. If payment is
-              refused, the service may block the passenger and assist with debt
-              recovery.
-            </div>
-
-            <div class="feature">
-              <strong>7. Changing the route</strong>
-              Passenger and driver may adjust the route by mutual agreement.
-              Cost recalculates automatically by actual distance and time. If
-              the change increases cost, the passenger pays the new amount. The
-              driver may refuse a change if it is unsafe or unprofitable.
-            </div>
-
-            <div class="feature">
-              <strong>8. Passenger behavior and safety</strong>
-              Passengers must not act aggressively, insult or threaten the driver,
-              interfere with vehicle control, distract the driver, smoke in the
-              car, or consume alcohol/drugs during the trip. If rules are broken,
-              the driver may end the trip early and drop the passenger off in a
-              safe place.
-            </div>
-
-            <div class="feature">
-              <strong>9. Ratings, complaints, and blocks</strong>
-              Driver and passenger rate each other after the trip. If a passenger
-              repeatedly breaks rules, damages the car, refuses payment, or
-              threatens drivers, the service may temporarily or permanently block
-              the account. In disputes, protecting the driver, their property,
-              and working time is the priority.
-            </div>
-
-            <div class="feature">
-              <strong>10. Conflicts and damage compensation</strong>
-              In disputes, the driver may provide photos/videos of the car,
-              chat history, route, and other evidence. The service reviews the
-              case and may: support a compensation claim, block the passenger,
-              limit functionality, or pass materials to authorities.
-            </div>
-
-            <div class="feature">
-              <strong>11. Protecting driver personal data</strong>
-              The platform does not disclose a driver’s personal data to
-              passengers: home address, personal phone number, documents, etc.
-              Communication and data transfer happen through protected service
-              channels.
-            </div>
-
-            <div class="feature">
-              <strong>12. Updating the rules</strong>
-              BoomBoom Taxi may update these rules. The latest version is
-              published on the site. Continuing to use the platform means you
-              accept the new terms.
-            </div>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo footer-logo">
+          <img src="../icons/bbt-logo.svg" alt="BoomBoom Taxi" class="logo-icon" />
+          <div class="logo-text">
+            <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+            <span class="logo-text-sub" data-i18n="brand.tagline">Drivers set the price</span>
           </div>
         </div>
-      </section>
-    </main>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div>© BoomBoom Taxi, 2025.</div>
+        <p class="muted" data-i18n="footer.copy">© BoomBoom Taxi, 2025. Platform in development (MVP).</p>
+      </div>
       <div class="footer-links">
-        <a href="rules.html">Service rules</a>
-        <a href="drivers.html">For drivers</a>
-        <a href="passengers.html">For passengers</a>
+        <a href="rules.html" data-i18n="footer.rules">Service Rules</a>
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <span class="footer-placeholder" data-i18n="footer.contact">Contact details will be added later.</span>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">Fb</a>
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">Ig</a>
       </div>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      const header = document.querySelector('.site-header');
-      if (!header) return;
-      const toggle = header.querySelector('.nav-toggle');
-      const nav = header.querySelector('.site-nav');
-      if (!toggle || !nav) return;
-
-      toggle.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('is-open');
-        toggle.classList.toggle('is-open', isOpen);
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    })();
-  </script>
+  <script src="../app.js"></script>
 </body>
 </html>

@@ -1,14 +1,41 @@
 :root {
+  --bg: #0d1117;
+  --text: #e8edf5;
+  --muted: #9aa3b5;
+  --accent: #f4c400;
+  --accent-strong: #d4a700;
+  --card: #161f2a;
+  --surface: #111923;
+  --border: #243446;
+  --hover: rgba(255, 255, 255, 0.06);
+  --header-bg: rgba(13, 17, 23, 0.9);
+  --pill-bg: rgba(244, 196, 0, 0.18);
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  --footer-bg: #0a0f16;
+  --footer-text: #f6f6f6;
+  --lang-bg: #131b26;
+  --button-secondary-bg: #111923;
+  --button-secondary-border: #243446;
+  --radius: 14px;
+  --max-width: 1200px;
+}
+
+.light-theme {
   --bg: #ffffff;
   --text: #111111;
   --muted: #4a4a4a;
-  --accent: #f4c400;
-  --accent-strong: #d4a700;
+  --card: #ffffff;
   --surface: #f7f7f7;
   --border: #e5e5e5;
-  --shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-  --radius: 14px;
-  --max-width: 1200px;
+  --hover: rgba(0, 0, 0, 0.04);
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --pill-bg: rgba(244, 196, 0, 0.12);
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  --footer-bg: #0f0f0f;
+  --footer-text: #f6f6f6;
+  --lang-bg: #f0f0f0;
+  --button-secondary-bg: #ffffff;
+  --button-secondary-border: #e5e5e5;
 }
 
 * {
@@ -50,7 +77,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
 }
@@ -107,6 +134,39 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--lang-bg);
+}
+
+.theme-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.theme-btn.active {
+  background: var(--hover);
+  color: var(--text);
 }
 
 .nav-link {
@@ -119,7 +179,7 @@ img {
 .nav-link:hover,
 .nav-link.active {
   color: var(--text);
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--hover);
 }
 
 .lang-switch {
@@ -127,7 +187,7 @@ img {
   align-items: center;
   gap: 6px;
   padding: 6px 8px;
-  background: #f0f0f0;
+  background: var(--lang-bg);
   border-radius: 12px;
   border: 1px solid var(--border);
 }
@@ -161,7 +221,7 @@ img {
 .burger span {
   width: 22px;
   height: 2px;
-  background: #000;
+  background: var(--text);
   display: block;
 }
 
@@ -189,8 +249,8 @@ img {
   align-items: center;
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(244, 196, 0, 0.12);
-  color: #111;
+  background: var(--pill-bg);
+  color: var(--text);
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -233,9 +293,9 @@ img {
 }
 
 .btn-secondary {
-  background: #fff;
-  color: #111;
-  border-color: var(--border);
+  background: var(--button-secondary-bg);
+  color: var(--text);
+  border-color: var(--button-secondary-border);
 }
 
 .btn:hover {
@@ -248,7 +308,7 @@ img {
 }
 
 .card {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
@@ -281,7 +341,7 @@ img {
 }
 
 .feature-card {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
@@ -324,13 +384,13 @@ img {
   border: 1px solid var(--border);
   padding: 8px 12px;
   border-radius: 10px;
-  background: #fff;
+  background: var(--card);
   font-weight: 600;
 }
 
 .footer {
-  background: #0f0f0f;
-  color: #f6f6f6;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   padding: 32px 0;
 }
 
@@ -341,8 +401,9 @@ img {
   align-items: center;
 }
 
-.footer a {
-  color: #f6f6f6;
+.footer a,
+.footer .footer-placeholder {
+  color: var(--footer-text);
   opacity: 0.9;
 }
 
@@ -374,7 +435,7 @@ img {
     top: 100%;
     right: 0;
     left: 0;
-    background: #fff;
+    background: var(--card);
     flex-direction: column;
     align-items: flex-start;
     padding: 12px 20px;
@@ -388,6 +449,11 @@ img {
 
   .lang-switch {
     margin-top: 6px;
+  }
+
+  .nav-controls {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .burger {

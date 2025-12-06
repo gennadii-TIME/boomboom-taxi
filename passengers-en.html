@@ -12,7 +12,7 @@
   <link rel="icon" type="image/svg+xml" href="icons/bbt-logo.svg">
   <link rel="manifest" href="/site.webmanifest">
 </head>
-<body class="page">
+<body class="page dark-theme">
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo" aria-label="BoomBoom Taxi">
@@ -33,10 +33,16 @@
         <a href="passengers.html" class="nav-link active" data-i18n="nav.passengers">Passengers</a>
         <a href="rules.html" class="nav-link" data-i18n="nav.rules">Service Rules</a>
         <a href="#contacts" class="nav-link" data-i18n="nav.contacts">Contacts</a>
-        <div class="lang-switch" aria-label="Language switcher">
-          <button class="lang-btn" data-lang="ru">RU</button>
-          <button class="lang-btn active" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="lv">LV</button>
+        <div class="nav-controls">
+          <div class="theme-toggle" role="group" aria-label="Theme toggle">
+            <button class="theme-btn active" data-theme="dark" aria-pressed="true" data-i18n="theme.dark">Dark</button>
+            <button class="theme-btn" data-theme="light" aria-pressed="false" data-i18n="theme.light">Light</button>
+          </div>
+          <div class="lang-switch" aria-label="Language switcher">
+            <button class="lang-btn" data-lang="ru">RU</button>
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="lv">LV</button>
+          </div>
         </div>
       </nav>
     </div>
@@ -132,17 +138,17 @@
 
   <section id="contacts" class="section">
     <div class="container grid three">
-      <div class="feature-card">
-        <h3 data-i18n="contacts.title">Contact us</h3>
-        <p data-i18n="contacts.email">support@boomboom.taxi</p>
-      </div>
-      <div class="feature-card">
-        <h3 data-i18n="contacts.phone.label">Phone</h3>
-        <p data-i18n="contacts.phone.value">+372 5555 0000</p>
-      </div>
-      <div class="feature-card">
-        <h3 data-i18n="contacts.office.label">Office</h3>
-        <p data-i18n="contacts.office.value">Tallinn, Estonia</p>
+        <div class="feature-card">
+          <h3 data-i18n="contacts.title">Contact us</h3>
+          <p data-i18n="contacts.email">Contact details will be added later.</p>
+        </div>
+        <div class="feature-card">
+          <h3 data-i18n="contacts.phone.label">Phone</h3>
+          <p data-i18n="contacts.phone.value">Contact details will be added later.</p>
+        </div>
+        <div class="feature-card">
+          <h3 data-i18n="contacts.office.label">Office</h3>
+          <p data-i18n="contacts.office.value">Tallinn, Estonia</p>
       </div>
     </div>
   </section>
@@ -162,7 +168,7 @@
       <div class="footer-links">
         <a href="rules.html" data-i18n="footer.rules">Service Rules</a>
         <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="#" data-i18n="footer.contact">contact@boomboom.taxi</a>
+        <span class="footer-placeholder" data-i18n="footer.contact">Contact details will be added later.</span>
       </div>
       <div class="footer-social">
         <a href="#" aria-label="Facebook">Fb</a>
