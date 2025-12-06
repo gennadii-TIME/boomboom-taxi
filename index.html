@@ -7,40 +7,26 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="icons/bbt-logo.svg">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#050816">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="BoomBoom Taxi — сервис, где водитель сам ставит цену, а пассажир выбирает честные поездки.">
 </head>
-<body>
-  <div class="page">
-    <header class="site-header">
-      <div class="logo">
-        <img src="/icons/bbt-logo.svg" alt="Логотип BoomBoom Taxi" class="logo-mark" />
-        <div>
+<body class="page home">
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi">
+        <div class="logo-text">
           <div class="logo-text-main">BoomBoom Taxi</div>
           <div class="logo-text-sub">Водитель сам ставит цену</div>
         </div>
       </a>
 
       <nav class="site-nav">
-        <a href="drivers.html" class="nav-link">Водителям</a>
-        <a href="passengers.html" class="nav-link">Пассажирам</a>
-        <a href="rules.html" class="nav-link">Правила сервиса</a>
-        <div class="nav-cta">MVP • В разработке</div>
-        <div class="lang-switch">
-          <a href="index.html" class="lang active">RU</a>
-          <span class="lang-sep">/</span>
-          <a href="en/index.html" class="lang">EN</a>
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Левая колонка -->
-      <section>
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          <span>Честный маркетплейс поездок</span>
-        </div>
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="drivers.html" class="nav-link">Drivers</a>
+        <a href="passengers.html" class="nav-link">Passengers</a>
+        <a href="rules.html" class="nav-link">Service Rules</a>
+        <a href="#contacts" class="nav-link">Contacts</a>
       </nav>
     </div>
   </header>
@@ -49,45 +35,95 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <h1 class="hero-title">Такси, где водитель сам управляет ценой</h1>
-          <p class="hero-subtitle">BoomBoom Taxi создаёт прозрачный рынок: водитель выставляет тариф, пассажир выбирает лучшее предложение. Без навязанной динамики цен, с честными правилами и защитой обеих сторон.</p>
+          <div class="pill">Прозрачный сервис без скрытых алгоритмов</div>
+          <h1 class="hero-title">BoomBoom Taxi: водитель сам ставит цену</h1>
+          <p class="hero-subtitle">Минимум шума, максимум контроля. Вы выбираете тариф, а пассажир видит прозрачную стоимость до подтверждения поездки.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="drivers.html">Стать водителем</a>
-            <a class="btn btn-secondary" href="passengers.html">Найти поездку</a>
+            <a class="btn btn-secondary" href="passengers.html">Выбрать поездку</a>
           </div>
+          <p class="muted">Честная цена, чёткие правила, защита для водителя и пассажира.</p>
         </div>
-        <div class="gold-card">
-          <h3>Карточка водителя</h3>
-          <ul>
-            <li><strong>Текущий тариф:</strong> 0.50 € / км · 0.10 € / мин</li>
-            <li><strong>Стаж:</strong> 6 лет · 8 200 поездок</li>
-            <li><strong>Рейтинг:</strong> 4.94 · Комиссия уменьшается при высоком рейтинге</li>
-            <li><strong>Оплата:</strong> карты, наличные, криптовалюта</li>
+        <div class="surface">
+          <h3 class="surface-title">Быстрый старт</h3>
+          <ul class="checklist">
+            <li>Тариф по умолчанию: 0.50 € / км и 0.10 € / мин</li>
+            <li>Можно менять стоимость в любой момент</li>
+            <li>Оплата: карты, наличные, криптовалюта</li>
           </ul>
+          <div class="stat-grid">
+            <div class="stat">
+              <strong>30 сек</strong>
+              <span>на ответ по заказу</span>
+            </div>
+            <div class="stat">
+              <strong>4.9 ★</strong>
+              <span>рейтинг влияет на комиссию</span>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>поддержка водителей</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="page-section">
       <div class="container">
-        <h2 class="section-title">Стабильность, скорость и гарантия</h2>
-        <div class="card-grid">
-          <div class="gold-card">
+        <h2 class="section-title">Три принципа сервиса</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
             <h3>Стабильность</h3>
-            <p>Без скрытых алгоритмов. Вы сами меняете цену в любой момент, а пассажир видит честный тариф.</p>
+            <p>Стоимость прозрачна и предсказуема. Вы контролируете цену — пассажир сразу видит итоговую сумму.</p>
           </div>
-          <div class="gold-card">
+          <div class="feature-card">
             <h3>Скорость</h3>
-            <p>Мгновенные запросы на поездку. Есть 30 секунд, чтобы принять заказ. Опоздали трижды — рейтинг чуть снижается.</p>
+            <p>Заказы приходят мгновенно, без навязчивых всплывающих окон. Решение принять — за вами.</p>
           </div>
-          <div class="gold-card">
+          <div class="feature-card">
             <h3>Гарантия</h3>
-            <p>Прозрачные правила: защита водителя, дисциплина пассажиров, автоматический пересчёт стоимости при изменении маршрута.</p>
+            <p>Чёткие правила: защита водителя и автомобиля, дисциплина пассажиров, честная история поездок.</p>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="page-section">
+      <div class="container hero-grid">
+        <div>
+          <h2 class="section-title">Карточка водителя</h2>
+          <p class="muted">Пассажиры видят рейтинг, стаж, автомобиль и ваш текущий тариф. Всё просто и без лишних отвлекающих блоков.</p>
+        </div>
+        <div class="surface">
+          <h3 class="surface-title">Что видит пассажир</h3>
+          <ul class="checklist">
+            <li>Тариф: 0.50 € / км · 0.10 € / мин</li>
+            <li>Стаж: 6 лет, 8 200 поездок</li>
+            <li>Рейтинг: 4.94, влияет на комиссию</li>
+            <li>Оплата: карты, наличные, криптовалюта</li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <section id="contacts" class="page-section">
+    <div class="container feature-grid">
+      <div class="feature-card">
+        <h3>Написать нам</h3>
+        <p class="muted">support@boomboom.taxi</p>
+      </div>
+      <div class="feature-card">
+        <h3>Позвонить</h3>
+        <p class="muted">+372 5555 0000</p>
+      </div>
+      <div class="feature-card">
+        <h3>Офис</h3>
+        <p class="muted">BoomBoom Taxi, Tallinn, Estonia</p>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     © BoomBoom Taxi, 2025. Платформа в разработке (MVP).
