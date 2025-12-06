@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title.drivers">BoomBoom Taxi — Driver information</title>
+  <meta name="description" data-i18n="meta.desc.drivers" content="How drivers work with BoomBoom Taxi: own price, rating, commission, and safety.">
+  <meta property="og:title" data-i18n="meta.title.drivers" content="BoomBoom Taxi — Driver information">
+  <meta property="og:description" data-i18n="meta.desc.drivers" content="How drivers work with BoomBoom Taxi: own price, rating, commission, and safety.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="icons/bbt-logo.svg">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="BoomBoom Taxi">
+        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi" />
+        <div class="logo-text">
+          <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+          <span class="logo-text-sub" data-i18n="brand.tagline">Drivers set the price</span>
+        </div>
+      </a>
+      <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="drivers.html" class="nav-link active" data-i18n="nav.drivers">Drivers</a>
+        <a href="passengers.html" class="nav-link" data-i18n="nav.passengers">Passengers</a>
+        <a href="rules.html" class="nav-link" data-i18n="nav.rules">Service Rules</a>
+        <a href="#contacts" class="nav-link" data-i18n="nav.contacts">Contacts</a>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button class="lang-btn" data-lang="ru">RU</button>
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="lv">LV</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill" data-i18n="drivers.pill">Price control and transparent trips</div>
+          <h1 class="hero-title" data-i18n="drivers.title">Driver information</h1>
+          <p class="hero-subtitle" data-i18n="drivers.subtitle">Set your fare, accept requests, and track commission. Passengers know the price and see your experience.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#faq" data-i18n="drivers.cta.faq">FAQ</a>
+            <a class="btn btn-secondary" href="#safety" data-i18n="drivers.cta.safety">Safety</a>
+          </div>
+        </div>
+        <div class="card shadow">
+          <h3 data-i18n="drivers.card.title">Quick parameters</h3>
+          <ul class="checklist">
+            <li data-i18n="drivers.card.item1">Default fare: €0.50 / km and €0.10 / min</li>
+            <li data-i18n="drivers.card.item2">Change price even while working</li>
+            <li data-i18n="drivers.card.item3">Commission depends on rating and discipline</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="how">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="drivers.how.title">How it works</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.how.item1">Set your fare in the app.</li>
+            <li data-i18n="drivers.how.item2">Requests come with your pricing.</li>
+            <li data-i18n="drivers.how.item3">You have 30 seconds to accept.</li>
+            <li data-i18n="drivers.how.item4">After confirmation, complete the ride.</li>
+          </ul>
+        </div>
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="drivers.price.title">Your price</h2>
+          <p data-i18n="drivers.price.text">Change pricing anytime. Distance and time are included; tolls and waiting are listed separately.</p>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.price.item1">Base fare: €0.50 / km, €0.10 / min.</li>
+            <li data-i18n="drivers.price.item2">Adjust fares freely to fit the situation.</li>
+            <li data-i18n="drivers.price.item3">Passengers see cost before confirming.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rating">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="drivers.rating.title">Commission & rating</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.rating.item1">Higher rating = lower commission.</li>
+            <li data-i18n="drivers.rating.item2">Skipping 3 requests in a row lowers rating by 0.1.</li>
+            <li data-i18n="drivers.rating.item3">Trip and payout history always available.</li>
+          </ul>
+        </div>
+        <div class="card shadow" id="docs">
+          <h2 class="section-title" data-i18n="drivers.docs.title">Documents</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.docs.item1">Driving license, insurance, vehicle registration.</li>
+            <li data-i18n="drivers.docs.item2">Photo of the car and plate.</li>
+            <li data-i18n="drivers.docs.item3">Bank account confirmation for payouts.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="safety">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="drivers.safety.title">Safety</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.safety.item1">Block passengers for 1 week / 1 month / 6 months / 1 year / forever.</li>
+            <li data-i18n="drivers.safety.item2">Passengers must follow behavior rules.</li>
+            <li data-i18n="drivers.safety.item3">Support responds 24/7 to driver issues.</li>
+          </ul>
+        </div>
+        <div class="card shadow" id="faq">
+          <h2 class="section-title" data-i18n="drivers.faq.title">FAQ</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.faq.item1">Can the route change? Yes, the system recalculates price.</li>
+            <li data-i18n="drivers.faq.item2">How to get paid? At launch cashless only; cash and crypto will be added.</li>
+            <li data-i18n="drivers.faq.item3">Passenger no-show? Cancellation and waiting rules are in the app.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="contacts" class="section">
+    <div class="container grid three">
+      <div class="feature-card">
+        <h3 data-i18n="contacts.title">Contact us</h3>
+        <p data-i18n="contacts.email">support@boomboom.taxi</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="contacts.phone.label">Phone</h3>
+        <p data-i18n="contacts.phone.value">+372 5555 0000</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="contacts.office.label">Office</h3>
+        <p data-i18n="contacts.office.value">Tallinn, Estonia</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo footer-logo">
+          <img src="icons/bbt-logo.svg" alt="BoomBoom Taxi" class="logo-icon" />
+          <div class="logo-text">
+            <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+            <span class="logo-text-sub" data-i18n="brand.tagline">Drivers set the price</span>
+          </div>
+        </div>
+        <p class="muted" data-i18n="footer.copy">© BoomBoom Taxi, 2025. Platform in development (MVP).</p>
+      </div>
+      <div class="footer-links">
+        <a href="rules.html" data-i18n="footer.rules">Service Rules</a>
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer.contact">contact@boomboom.taxi</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">Fb</a>
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">Ig</a>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

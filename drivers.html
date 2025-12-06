@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title.drivers">BoomBoom Taxi — Информация для водителей</title>
+  <meta name="description" data-i18n="meta.desc.drivers" content="Как водителям работать с BoomBoom Taxi: своя цена, рейтинг, комиссия и безопасность.">
+  <meta property="og:title" data-i18n="meta.title.drivers" content="BoomBoom Taxi — Информация для водителей">
+  <meta property="og:description" data-i18n="meta.desc.drivers" content="Как водителям работать с BoomBoom Taxi: своя цена, рейтинг, комиссия и безопасность.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="icons/bbt-logo.svg">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="BoomBoom Taxi">
+        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi" />
+        <div class="logo-text">
+          <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+          <span class="logo-text-sub" data-i18n="brand.tagline">Водитель сам ставит цену</span>
+        </div>
+      </a>
+      <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Главная</a>
+        <a href="drivers.html" class="nav-link active" data-i18n="nav.drivers">Водителям</a>
+        <a href="passengers.html" class="nav-link" data-i18n="nav.passengers">Пассажирам</a>
+        <a href="rules.html" class="nav-link" data-i18n="nav.rules">Правила сервиса</a>
+        <a href="#contacts" class="nav-link" data-i18n="nav.contacts">Контакты</a>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="lv">LV</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill" data-i18n="drivers.pill">Контроль цены и прозрачные поездки</div>
+          <h1 class="hero-title" data-i18n="drivers.title">Информация для водителей</h1>
+          <p class="hero-subtitle" data-i18n="drivers.subtitle">Вы ставите тариф, принимаете заказы и следите за комиссией. Пассажир заранее знает цену и видит ваш стаж.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#faq" data-i18n="drivers.cta.faq">Частые вопросы</a>
+            <a class="btn btn-secondary" href="#safety" data-i18n="drivers.cta.safety">Безопасность</a>
+          </div>
+        </div>
+        <div class="card shadow">
+          <h3 data-i18n="drivers.card.title">Быстрые параметры</h3>
+          <ul class="checklist">
+            <li data-i18n="drivers.card.item1">Тариф по умолчанию: 0.50 € / км и 0.10 € / мин</li>
+            <li data-i18n="drivers.card.item2">Можно менять цену даже во время работы</li>
+            <li data-i18n="drivers.card.item3">Комиссия зависит от рейтинга и дисциплины</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="how">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="drivers.how.title">Как работает сервис</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.how.item1">Выставляете свой тариф в приложении.</li>
+            <li data-i18n="drivers.how.item2">Система отправляет заявки по вашему ценнику.</li>
+            <li data-i18n="drivers.how.item3">На принятие заказа — 30 секунд.</li>
+            <li data-i18n="drivers.how.item4">После подтверждения — выполняете поездку.</li>
+          </ul>
+        </div>
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="drivers.price.title">Своя цена</h2>
+          <p data-i18n="drivers.price.text">Меняйте цену в любое время. В стоимости учтены километры и минуты, отдельно прописываются платные дороги и ожидание.</p>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.price.item1">Базовый тариф: 0.50 € / км, 0.10 € / мин.</li>
+            <li data-i18n="drivers.price.item2">Свободное изменение тарифа по ситуации.</li>
+            <li data-i18n="drivers.price.item3">Пассажир видит цену до подтверждения.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rating">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="drivers.rating.title">Комиссия и рейтинг</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.rating.item1">Чем выше рейтинг — тем ниже комиссия.</li>
+            <li data-i18n="drivers.rating.item2">Пропуск 3 подряд заказов снижает рейтинг на 0.1.</li>
+            <li data-i18n="drivers.rating.item3">История поездок и начислений всегда доступна.</li>
+          </ul>
+        </div>
+        <div class="card shadow" id="docs">
+          <h2 class="section-title" data-i18n="drivers.docs.title">Документы</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.docs.item1">Водительское удостоверение, страховка, техпаспорт.</li>
+            <li data-i18n="drivers.docs.item2">Фотография автомобиля и номера.</li>
+            <li data-i18n="drivers.docs.item3">Подтверждение банковского счёта для выплат.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="safety">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="drivers.safety.title">Безопасность</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.safety.item1">Возможность блокировать пассажира: 1 неделя / 1 месяц / 6 месяцев / 1 год / навсегда.</li>
+            <li data-i18n="drivers.safety.item2">Пассажиры обязаны соблюдать правила поведения.</li>
+            <li data-i18n="drivers.safety.item3">Поддержка реагирует 24/7 на обращения водителей.</li>
+          </ul>
+        </div>
+        <div class="card shadow" id="faq">
+          <h2 class="section-title" data-i18n="drivers.faq.title">FAQ</h2>
+          <ul class="bullet-list">
+            <li data-i18n="drivers.faq.item1">Можно ли менять маршрут? Да, система пересчитает стоимость.</li>
+            <li data-i18n="drivers.faq.item2">Как принимается оплата? На старте — безналично; далее добавим наличные и крипто.</li>
+            <li data-i18n="drivers.faq.item3">Что если пассажир не выходит? Правила отмены и ожидания указаны в приложении.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="contacts" class="section">
+    <div class="container grid three">
+      <div class="feature-card">
+        <h3 data-i18n="contacts.title">Свяжитесь с нами</h3>
+        <p data-i18n="contacts.email">support@boomboom.taxi</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="contacts.phone.label">Телефон</h3>
+        <p data-i18n="contacts.phone.value">+372 5555 0000</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="contacts.office.label">Офис</h3>
+        <p data-i18n="contacts.office.value">Tallinn, Estonia</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo footer-logo">
+          <img src="icons/bbt-logo.svg" alt="BoomBoom Taxi" class="logo-icon" />
+          <div class="logo-text">
+            <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+            <span class="logo-text-sub" data-i18n="brand.tagline">Водитель сам ставит цену</span>
+          </div>
+        </div>
+        <p class="muted" data-i18n="footer.copy">© BoomBoom Taxi, 2025. Platform in development (MVP).</p>
+      </div>
+      <div class="footer-links">
+        <a href="rules.html" data-i18n="footer.rules">Правила сервиса</a>
+        <a href="#" data-i18n="footer.privacy">Политика конфиденциальности</a>
+        <a href="#" data-i18n="footer.contact">contact@boomboom.taxi</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">Fb</a>
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">Ig</a>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
