@@ -3,130 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoomBoom Taxi — водитель сам ставит цену</title>
+  <title data-i18n="meta.title.home">BoomBoom Taxi — водитель сам ставит цену</title>
+  <meta name="description" data-i18n="meta.desc.home" content="BoomBoom Taxi — сервис, где водитель сам ставит цену, а пассажир выбирает прозрачные поездки.">
+  <meta property="og:title" data-i18n="meta.title.home" content="BoomBoom Taxi — водитель сам ставит цену">
+  <meta property="og:description" data-i18n="meta.desc.home" content="BoomBoom Taxi — сервис, где водитель сам ставит цену, а пассажир выбирает прозрачные поездки.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boomboom.taxi/">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="icons/bbt-logo.svg">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="BoomBoom Taxi — сервис, где водитель сам ставит цену, а пассажир выбирает честные поездки.">
 </head>
-<body class="page home">
+<body class="page">
   <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="BoomBoom Taxi">
+        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi" />
         <div class="logo-text">
-          <div class="logo-text-main">BoomBoom Taxi</div>
-          <div class="logo-text-sub">Водитель сам ставит цену</div>
+          <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+          <span class="logo-text-sub" data-i18n="brand.tagline">Водитель сам ставит цену</span>
         </div>
       </a>
-
+      <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="site-nav">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="drivers.html" class="nav-link">Drivers</a>
-        <a href="passengers.html" class="nav-link">Passengers</a>
-        <a href="rules.html" class="nav-link">Service Rules</a>
-        <a href="#contacts" class="nav-link">Contacts</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Главная</a>
+        <a href="drivers.html" class="nav-link" data-i18n="nav.drivers">Водителям</a>
+        <a href="passengers.html" class="nav-link" data-i18n="nav.passengers">Пассажирам</a>
+        <a href="rules.html" class="nav-link" data-i18n="nav.rules">Правила сервиса</a>
+        <a href="#contacts" class="nav-link" data-i18n="nav.contacts">Контакты</a>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="lv">LV</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="section hero">
       <div class="container hero-grid">
         <div>
-          <div class="pill">Прозрачный сервис без скрытых алгоритмов</div>
-          <h1 class="hero-title">BoomBoom Taxi: водитель сам ставит цену</h1>
-          <p class="hero-subtitle">Минимум шума, максимум контроля. Вы выбираете тариф, а пассажир видит прозрачную стоимость до подтверждения поездки.</p>
+          <div class="pill" data-i18n="home.pill">Прозрачный сервис без скрытых алгоритмов</div>
+          <h1 class="hero-title" data-i18n="home.title">BoomBoom Taxi: водитель сам ставит цену</h1>
+          <p class="hero-subtitle" data-i18n="home.subtitle">Минимум шума, максимум контроля. Вы выбираете тариф, а пассажир видит итоговую стоимость заранее.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="drivers.html">Стать водителем</a>
-            <a class="btn btn-secondary" href="passengers.html">Выбрать поездку</a>
+            <a class="btn btn-primary" href="drivers.html" data-i18n="home.cta.driver">Стать водителем</a>
+            <a class="btn btn-secondary" href="passengers.html" data-i18n="home.cta.passenger">Выбрать поездку</a>
           </div>
-          <p class="muted">Честная цена, чёткие правила, защита для водителя и пассажира.</p>
+          <p class="muted" data-i18n="home.note">Честная цена, чёткие правила, защита для водителя и пассажира.</p>
         </div>
-        <div class="surface">
-          <h3 class="surface-title">Быстрый старт</h3>
+        <div class="card shadow">
+          <h3 data-i18n="home.card.title">Быстрый старт</h3>
           <ul class="checklist">
-            <li>Тариф по умолчанию: 0.50 € / км и 0.10 € / мин</li>
-            <li>Можно менять стоимость в любой момент</li>
-            <li>Оплата: карты, наличные, криптовалюта</li>
+            <li data-i18n="home.card.item1">Тариф по умолчанию: 0.50 € / км и 0.10 € / мин</li>
+            <li data-i18n="home.card.item2">Можно менять стоимость в любой момент</li>
+            <li data-i18n="home.card.item3">Оплата: карты, наличные, криптовалюта</li>
           </ul>
           <div class="stat-grid">
             <div class="stat">
-              <strong>30 сек</strong>
-              <span>на ответ по заказу</span>
+              <strong data-i18n="home.card.stat1.value">30 сек</strong>
+              <span data-i18n="home.card.stat1.label">на ответ по заказу</span>
             </div>
             <div class="stat">
-              <strong>4.9 ★</strong>
-              <span>рейтинг влияет на комиссию</span>
+              <strong data-i18n="home.card.stat2.value">4.9 ★</strong>
+              <span data-i18n="home.card.stat2.label">рейтинг влияет на комиссию</span>
             </div>
             <div class="stat">
-              <strong>24/7</strong>
-              <span>поддержка водителей</span>
+              <strong data-i18n="home.card.stat3.value">24/7</strong>
+              <span data-i18n="home.card.stat3.label">поддержка водителей</span>
             </div>
           </div>
+          <p class="muted">Честная цена, чёткие правила, защита для водителя и пассажира.</p>
         </div>
       </div>
     </section>
 
-    <section class="page-section">
+    <section class="section light">
       <div class="container">
-        <h2 class="section-title">Три принципа сервиса</h2>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Стабильность</h3>
-            <p>Стоимость прозрачна и предсказуема. Вы контролируете цену — пассажир сразу видит итоговую сумму.</p>
+        <h2 class="section-title" data-i18n="principles.title">Три принципа сервиса</h2>
+        <div class="grid three">
+          <div class="feature-card" data-i18n="principles.stability.text">
+            <h3 data-i18n="principles.stability.title">Стабильность</h3>
+            <p data-i18n="principles.stability.text">Стоимость прозрачна и предсказуема. Вы контролируете цену — пассажир сразу видит итоговую сумму.</p>
           </div>
           <div class="feature-card">
-            <h3>Скорость</h3>
-            <p>Заказы приходят мгновенно, без навязчивых всплывающих окон. Решение принять — за вами.</p>
+            <h3 data-i18n="principles.speed.title">Скорость</h3>
+            <p data-i18n="principles.speed.text">Заказы приходят быстро, без лишнего шума. Решение принять — за вами.</p>
           </div>
           <div class="feature-card">
-            <h3>Гарантия</h3>
-            <p>Чёткие правила: защита водителя и автомобиля, дисциплина пассажиров, честная история поездок.</p>
+            <h3 data-i18n="principles.safety.title">Гарантия</h3>
+            <p data-i18n="principles.safety.text">Чёткие правила: защита водителя и автомобиля, дисциплина пассажиров, честная история поездок.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="page-section">
+    <section class="section">
       <div class="container hero-grid">
         <div>
-          <h2 class="section-title">Карточка водителя</h2>
-          <p class="muted">Пассажиры видят рейтинг, стаж, автомобиль и ваш текущий тариф. Всё просто и без лишних отвлекающих блоков.</p>
+          <h2 class="section-title" data-i18n="drivercard.title">Карточка водителя</h2>
+          <p class="muted" data-i18n="drivercard.subtitle">Пассажиры видят рейтинг, стаж, автомобиль и ваш текущий тариф. Всё просто и без лишних отвлекающих блоков.</p>
         </div>
-        <div class="surface">
-          <h3 class="surface-title">Что видит пассажир</h3>
+        <div class="card shadow">
+          <h3 data-i18n="drivercard.card.title">Что видит пассажир</h3>
           <ul class="checklist">
-            <li>Тариф: 0.50 € / км · 0.10 € / мин</li>
-            <li>Стаж: 6 лет, 8 200 поездок</li>
-            <li>Рейтинг: 4.94, влияет на комиссию</li>
-            <li>Оплата: карты, наличные, криптовалюта</li>
+            <li data-i18n="drivercard.card.item1">Тариф: 0.50 € / км · 0.10 € / мин</li>
+            <li data-i18n="drivercard.card.item2">Стаж: 6 лет, 8 200 поездок</li>
+            <li data-i18n="drivercard.card.item3">Рейтинг: 4.94, влияет на комиссию</li>
+            <li data-i18n="drivercard.card.item4">Оплата: карты, наличные, криптовалюта</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="container">
+        <h2 class="section-title" data-i18n="differ.title">Почему BoomBoom Taxi другой</h2>
+        <div class="grid four">
+          <div class="feature-card">
+            <h3 data-i18n="differ.card1.title">Водители сами ставят цену</h3>
+            <p data-i18n="differ.card1.text">Нет скрытых алгоритмов. Тариф — ваш выбор, пассажир получает честное предложение.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-i18n="differ.card2.title">Комиссия ниже при рейтинге</h3>
+            <p data-i18n="differ.card2.text">Высокий рейтинг снижает комиссию. Стабильная работа — больше чистый доход.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-i18n="differ.card3.title">Взаимные блокировки</h3>
+            <p data-i18n="differ.card3.text">Водители и пассажиры могут блокировать друг друга на 1 неделю / 1 месяц / 6 месяцев / 1 год / навсегда.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-i18n="differ.card4.title">Каждая 100-я поездка</h3>
+            <p data-i18n="differ.card4.text">Каждая 100-я поездка бесплатна для пассажира (иногда 98-я или 101-я, чтобы исключить злоупотребления).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container hero-grid">
+        <div>
+          <h2 class="section-title" data-i18n="apps.title">Скоро в приложениях</h2>
+          <p class="muted" data-i18n="apps.subtitle">Делаем две отдельные версии: для водителей и для пассажиров. Удобный старт, понятные заказы, прозрачные выплаты.</p>
+        </div>
+        <div class="grid two">
+          <div class="card shadow">
+            <h3 data-i18n="apps.driver.title">Приложение для водителей</h3>
+            <p data-i18n="apps.driver.text">Управляйте ценой, принимайте заказы, следите за рейтингом и комиссией. Полная история поездок.</p>
+            <div class="badges">
+              <span class="store-badge" data-i18n="apps.badge.appstore">Coming soon on App Store</span>
+              <span class="store-badge" data-i18n="apps.badge.play">Coming soon on Google Play</span>
+            </div>
+          </div>
+          <div class="card shadow">
+            <h3 data-i18n="apps.passenger.title">Приложение для пассажиров</h3>
+            <p data-i18n="apps.passenger.text">Выбирайте лучшее предложение, фиксируйте маршрут, оплачивайте безналично на старте сервиса.</p>
+            <div class="badges">
+              <span class="store-badge" data-i18n="apps.badge.appstore">Coming soon on App Store</span>
+              <span class="store-badge" data-i18n="apps.badge.play">Coming soon on Google Play</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="section light">
+      <div class="container grid three">
+        <div class="feature-card">
+          <h3 data-i18n="contacts.title">Свяжитесь с нами</h3>
+          <p data-i18n="contacts.email">support@boomboom.taxi</p>
+        </div>
+        <div class="feature-card">
+          <h3 data-i18n="contacts.phone.label">Телефон</h3>
+          <p data-i18n="contacts.phone.value">+372 5555 0000</p>
+        </div>
+        <div class="feature-card">
+          <h3 data-i18n="contacts.office.label">Офис</h3>
+          <p data-i18n="contacts.office.value">Tallinn, Estonia</p>
         </div>
       </div>
     </section>
   </main>
 
-  <section id="contacts" class="page-section">
-    <div class="container feature-grid">
-      <div class="feature-card">
-        <h3>Написать нам</h3>
-        <p class="muted">support@boomboom.taxi</p>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo footer-logo">
+          <img src="icons/bbt-logo.svg" alt="BoomBoom Taxi" class="logo-icon" />
+          <div class="logo-text">
+            <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+            <span class="logo-text-sub" data-i18n="brand.tagline">Водитель сам ставит цену</span>
+          </div>
+        </div>
+        <p class="muted" data-i18n="footer.copy">© BoomBoom Taxi, 2025. Platform in development (MVP).</p>
       </div>
-      <div class="feature-card">
-        <h3>Позвонить</h3>
-        <p class="muted">+372 5555 0000</p>
+      <div class="footer-links">
+        <a href="rules.html" data-i18n="footer.rules">Правила сервиса</a>
+        <a href="#" data-i18n="footer.privacy">Политика конфиденциальности</a>
+        <a href="#" data-i18n="footer.contact">contact@boomboom.taxi</a>
       </div>
-      <div class="feature-card">
-        <h3>Офис</h3>
-        <p class="muted">BoomBoom Taxi, Tallinn, Estonia</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">Fb</a>
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">Ig</a>
       </div>
     </div>
-  </section>
-
-  <footer class="footer">
-    © BoomBoom Taxi, 2025. Платформа в разработке (MVP).
   </footer>
+  <script src="app.js"></script>
 </body>
 </html>

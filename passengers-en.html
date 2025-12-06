@@ -3,102 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoomBoom Taxi — For Passengers</title>
+  <title data-i18n="meta.title.passengers">BoomBoom Taxi — Passenger information</title>
+  <meta name="description" data-i18n="meta.desc.passengers" content="How passengers use BoomBoom Taxi: choosing offers, transparent pricing, and safety.">
+  <meta property="og:title" data-i18n="meta.title.passengers" content="BoomBoom Taxi — Passenger information">
+  <meta property="og:description" data-i18n="meta.desc.passengers" content="How passengers use BoomBoom Taxi: choosing offers, transparent pricing, and safety.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="icons/bbt-logo.svg">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#050816">
-  <meta name="description" content="Passengers choose BoomBoom Taxi drivers by fare, rating, and transparent rules with fair pricing.">
 </head>
 <body class="page">
   <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="BoomBoom Taxi">
+        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi" />
         <div class="logo-text">
-          <div class="logo-text-main">BoomBoom Taxi</div>
-          <div class="logo-text-sub">Driver sets the price</div>
+          <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+          <span class="logo-text-sub" data-i18n="brand.tagline">Drivers set the price</span>
         </div>
       </a>
-
+      <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="site-nav">
-        <a href="index-en.html" class="nav-link">Home</a>
-        <a href="drivers-en.html" class="nav-link">Drivers</a>
-        <a href="passengers-en.html" class="nav-link active">Passengers</a>
-        <a href="rules-en.html" class="nav-link">Service Rules</a>
-        <a href="index-en.html#contacts" class="nav-link">Contacts</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="drivers.html" class="nav-link" data-i18n="nav.drivers">Drivers</a>
+        <a href="passengers.html" class="nav-link active" data-i18n="nav.passengers">Passengers</a>
+        <a href="rules.html" class="nav-link" data-i18n="nav.rules">Service Rules</a>
+        <a href="#contacts" class="nav-link" data-i18n="nav.contacts">Contacts</a>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button class="lang-btn" data-lang="ru">RU</button>
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="lv">LV</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="section hero">
       <div class="container hero-grid">
         <div>
-          <h1 class="hero-title">Pick your driver at a fair price</h1>
-          <p class="hero-subtitle">See the fare, rating, and conditions first — then confirm. No price surprises and clear safety rules.</p>
+          <div class="pill" data-i18n="passengers.pill">Transparent fares and driver choice</div>
+          <h1 class="hero-title" data-i18n="passengers.title">Passenger information</h1>
+          <p class="hero-subtitle" data-i18n="passengers.subtitle">Request a ride, compare driver offers, and choose the best. Early stage payments are cashless.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="drivers-en.html">View driver rates</a>
-            <a class="btn btn-secondary" href="rules-en.html">Service rules</a>
+            <a class="btn btn-primary" href="#request" data-i18n="passengers.cta.request">How to request a ride</a>
+            <a class="btn btn-secondary" href="#faq" data-i18n="passengers.cta.faq">FAQ</a>
           </div>
         </div>
-        <div class="gold-card">
-          <h3>Transparency for riders</h3>
-          <p class="muted">The price is based on the driver's fare. If the route changes, the cost is recalculated before the trip ends.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="page-section">
-      <div class="container card-grid">
-        <div class="gold-card">
-          <h3>How riders choose a driver</h3>
-          <ul>
-            <li>See the driver's fare and rating before you confirm.</li>
-            <li>Filter offers by price and arrival time.</li>
-            <li>Confirm only when the conditions match your needs.</li>
-          </ul>
-        </div>
-        <div class="gold-card">
-          <h3>Transparent prices</h3>
-          <p class="muted">No hidden multipliers. Drivers can update their rate and you instantly see the new price before the trip starts.</p>
-        </div>
-        <div class="gold-card">
-          <h3>Payment methods</h3>
-          <ul>
-            <li>Bank cards</li>
-            <li>Cash</li>
-            <li>Crypto</li>
-            <li>Payment is taken only after the trip is finished.</li>
+        <div class="card shadow">
+          <h3 data-i18n="passengers.card.title">What matters</h3>
+          <ul class="checklist">
+            <li data-i18n="passengers.card.item1">Passengers see price upfront—no surprises.</li>
+            <li data-i18n="passengers.card.item2">Pick a driver by rating, price, and car.</li>
+            <li data-i18n="passengers.card.item3">Route changes? The system updates cost.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="page-section">
-      <div class="container info-row">
-        <div class="gold-card">
-          <h3>Safety</h3>
-          <ul>
-            <li>Drivers verified by documents, tenure, and rating.</li>
-            <li>Trip history available in your profile.</li>
-            <li>Violations are logged; drivers can block a passenger.</li>
+    <section class="section light" id="request">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="passengers.request.title">How to request a ride</h2>
+          <ul class="bullet-list">
+            <li data-i18n="passengers.request.item1">Add route and pickup time.</li>
+            <li data-i18n="passengers.request.item2">Get driver offers with price and ETA.</li>
+            <li data-i18n="passengers.request.item3">Pick the best offer and confirm.</li>
           </ul>
         </div>
-        <div class="gold-card">
-          <h3>Why BoomBoom Taxi wins</h3>
-          <ul>
-            <li>Fair marketplace: every driver sets their fare.</li>
-            <li>Transparent commission and clear rules for both sides.</li>
-            <li>Premium black & gold theme with a fast, clean interface.</li>
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="passengers.choose.title">How to choose a driver</h2>
+          <ul class="bullet-list">
+            <li data-i18n="passengers.choose.item1">Check rating, car, and experience.</li>
+            <li data-i18n="passengers.choose.item2">Choose by price: driver sets the fare.</li>
+            <li data-i18n="passengers.choose.item3">Every 100th ride is free (sometimes 98th or 101st).</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="payment">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="passengers.payment.title">Payment</h2>
+          <p data-i18n="passengers.payment.text">At launch we only support cashless payments. Cash and crypto will follow.</p>
+          <ul class="bullet-list">
+            <li data-i18n="passengers.payment.item1">Cards and Apple/Google Pay.</li>
+            <li data-i18n="passengers.payment.item2">Receipts and history inside the app.</li>
+            <li data-i18n="passengers.payment.item3">Route changes recalculate the cost.</li>
+          </ul>
+        </div>
+        <div class="card shadow" id="safety">
+          <h2 class="section-title" data-i18n="passengers.safety.title">Safety</h2>
+          <ul class="bullet-list">
+            <li data-i18n="passengers.safety.item1">You can block drivers for 1 week / 1 month / 6 months / 1 year / forever.</li>
+            <li data-i18n="passengers.safety.item2">Drivers see your rating and trip history.</li>
+            <li data-i18n="passengers.safety.item3">Support responds 24/7.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="faq">
+      <div class="container grid two">
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="passengers.faq.title">FAQ</h2>
+          <ul class="bullet-list">
+            <li data-i18n="passengers.faq.item1">How to cancel? Cancellation policy is shown before confirmation.</li>
+            <li data-i18n="passengers.faq.item2">Driver late? Switch to another offer.</li>
+            <li data-i18n="passengers.faq.item3">Are taxes included? Yes, all fees are included in the total.</li>
+          </ul>
+        </div>
+        <div class="card shadow">
+          <h2 class="section-title" data-i18n="passengers.cta.apps.title">App</h2>
+          <p data-i18n="passengers.cta.apps.text">Coming soon to App Store and Google Play with offer comparison, trip history, and quick tips.</p>
+          <div class="badges">
+            <span class="store-badge" data-i18n="apps.badge.appstore">Coming soon on App Store</span>
+            <span class="store-badge" data-i18n="apps.badge.play">Coming soon on Google Play</span>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <section id="contacts" class="section">
+    <div class="container grid three">
+      <div class="feature-card">
+        <h3 data-i18n="contacts.title">Contact us</h3>
+        <p data-i18n="contacts.email">support@boomboom.taxi</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="contacts.phone.label">Phone</h3>
+        <p data-i18n="contacts.phone.value">+372 5555 0000</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="contacts.office.label">Office</h3>
+        <p data-i18n="contacts.office.value">Tallinn, Estonia</p>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
-    © BoomBoom Taxi, 2025. Platform in development (MVP).
+    <div class="container footer-grid">
+      <div>
+        <div class="logo footer-logo">
+          <img src="icons/bbt-logo.svg" alt="BoomBoom Taxi" class="logo-icon" />
+          <div class="logo-text">
+            <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+            <span class="logo-text-sub" data-i18n="brand.tagline">Drivers set the price</span>
+          </div>
+        </div>
+        <p class="muted" data-i18n="footer.copy">© BoomBoom Taxi, 2025. Platform in development (MVP).</p>
+      </div>
+      <div class="footer-links">
+        <a href="rules.html" data-i18n="footer.rules">Service Rules</a>
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer.contact">contact@boomboom.taxi</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">Fb</a>
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">Ig</a>
+      </div>
+    </div>
   </footer>
+  <script src="app.js"></script>
 </body>
 </html>

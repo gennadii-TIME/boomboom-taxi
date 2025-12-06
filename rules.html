@@ -3,95 +3,157 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoomBoom Taxi — Правила сервиса</title>
+  <title data-i18n="meta.title.rules">BoomBoom Taxi — Правила сервиса и отказ от ответственности</title>
+  <meta name="description" data-i18n="meta.desc.rules" content="Правила сервиса BoomBoom Taxi: обязанности водителей и пассажиров, платежи, рейтинг и конфиденциальность.">
+  <meta property="og:title" data-i18n="meta.title.rules" content="BoomBoom Taxi — Правила сервиса и отказ от ответственности">
+  <meta property="og:description" data-i18n="meta.desc.rules" content="Правила сервиса BoomBoom Taxi: обязанности водителей и пассажиров, платежи, рейтинг и конфиденциальность.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="icons/bbt-logo.svg">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#050816">
-  <meta name="description" content="Правила сервиса BoomBoom Taxi: тарифы, рейтинги, безопасность, ответственность водителей и пассажиров.">
 </head>
 <body class="page">
   <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="BoomBoom Taxi">
+        <img src="icons/bbt-logo.svg" class="logo-icon" alt="BoomBoom Taxi" />
         <div class="logo-text">
-          <div class="logo-text-main">BoomBoom Taxi</div>
-          <div class="logo-text-sub">Водитель сам ставит цену</div>
+          <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+          <span class="logo-text-sub" data-i18n="brand.tagline">Водитель сам ставит цену</span>
         </div>
       </a>
-
+      <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="site-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="drivers.html" class="nav-link">Drivers</a>
-        <a href="passengers.html" class="nav-link">Passengers</a>
-        <a href="rules.html" class="nav-link active">Service Rules</a>
-        <a href="index.html#contacts" class="nav-link">Contacts</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Главная</a>
+        <a href="drivers.html" class="nav-link" data-i18n="nav.drivers">Водителям</a>
+        <a href="passengers.html" class="nav-link" data-i18n="nav.passengers">Пассажирам</a>
+        <a href="rules.html" class="nav-link active" data-i18n="nav.rules">Правила сервиса</a>
+        <a href="#contacts" class="nav-link" data-i18n="nav.contacts">Контакты</a>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="lv">LV</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="section hero">
       <div class="container">
-        <h1 class="hero-title">Правила BoomBoom Taxi</h1>
-        <p class="hero-subtitle">Прозрачные условия для водителей и пассажиров. Рейтинги, дисциплина и защита — чтобы поездки были честными и безопасными.</p>
+        <div class="pill" data-i18n="rules.pill">Service Rules & Disclaimer</div>
+        <h1 class="hero-title" data-i18n="rules.title">Правила сервиса BoomBoom Taxi</h1>
+        <p class="hero-subtitle" data-i18n="rules.subtitle">Условия использования платформы для водителей и пассажиров, правила оплаты, рейтинга и конфиденциальности.</p>
       </div>
     </section>
 
-    <section class="page-section">
-      <div class="container card-grid">
-        <div class="gold-card">
-          <h3>Тариф и цена</h3>
-          <ul>
-            <li>Тариф устанавливает водитель и может менять его в любое время.</li>
-            <li>Пассажир видит итоговую цену перед подтверждением поездки.</li>
-            <li>При изменении маршрута стоимость пересчитывается автоматически.</li>
+    <section class="section light">
+      <div class="container legal-grid">
+        <div>
+          <h2 data-i18n="rules.general.title">Общие положения</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.general.item1">BoomBoom Taxi — платформа для поиска поездок; не является перевозчиком.</li>
+            <li data-i18n="rules.general.item2">Использование сервиса означает согласие с правилами и политикой конфиденциальности.</li>
+            <li data-i18n="rules.general.item3">Платформа может обновлять правила, уведомляя пользователей.</li>
           </ul>
         </div>
-        <div class="gold-card">
-          <h3>Рейтинг и дисциплина</h3>
-          <ul>
-            <li>Опоздание на подтверждение 3 заказов подряд снижает рейтинг на 0.1.</li>
-            <li>Стабильная работа и быстрая реакция повышают рейтинг водителя.</li>
-            <li>Нарушения пассажиров фиксируются; водитель может инициировать блокировку.</li>
+        <div>
+          <h2 data-i18n="rules.drivers.title">Обязанности водителей</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.drivers.item1">Предоставлять достоверные документы и поддерживать авто в исправном состоянии.</li>
+            <li data-i18n="rules.drivers.item2">Следовать согласованному маршруту и информировать о его изменении.</li>
+            <li data-i18n="rules.drivers.item3">Соблюдать правила безопасности и уважительно относиться к пассажирам.</li>
           </ul>
         </div>
-        <div class="gold-card">
-          <h3>Оплата и комиссия</h3>
-          <ul>
-            <li>Принимаются карты, наличные и криптовалюта.</li>
-            <li>Комиссия удерживается автоматически, водителю перечисляется чистая сумма.</li>
-            <li>Чек и история поездки доступны обеим сторонам.</li>
+        <div>
+          <h2 data-i18n="rules.passengers.title">Обязанности пассажиров</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.passengers.item1">Указывать правдивый маршрут и быть готовым к посадке вовремя.</li>
+            <li data-i18n="rules.passengers.item2">Соблюдать правила поведения, не мешать водителю управлять автомобилем.</li>
+            <li data-i18n="rules.passengers.item3">Следовать инструкциям по оплате и уважать имущество водителя.</li>
           </ul>
         </div>
-      </div>
-    </section>
-
-    <section class="page-section">
-      <div class="container info-row">
-        <div class="gold-card">
-          <h3>Безопасность</h3>
-          <ul>
-            <li>Проверка документов водителей и контроль автомобилей.</li>
-            <li>Поддержка в конфликтных ситуациях и при ЧС.</li>
-            <li>Блокировка пассажиров по срокам: 1 неделя, 1 месяц, 6 месяцев, 1 год или навсегда.</li>
+        <div>
+          <h2 data-i18n="rules.platform.title">Ответственность платформы</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.platform.item1">Платформа обеспечивает инфраструктуру и поддержку, но не отвечает за действия пользователей.</li>
+            <li data-i18n="rules.platform.item2">BoomBoom Taxi может приостанавливать доступ при нарушениях правил.</li>
+            <li data-i18n="rules.platform.item3">В спорных ситуациях платформа помогает собрать информацию для сторон.</li>
           </ul>
         </div>
-        <div class="gold-card">
-          <h3>Ответственность</h3>
-          <ul>
-            <li>Водитель обязан соблюдать правила дорожного движения и условия сервиса.</li>
-            <li>Пассажир обязан уважать автомобиль и время водителя.</li>
-            <li>Любое мошенничество приводит к блокировке учётной записи.</li>
+        <div>
+          <h2 data-i18n="rules.payment.title">Правила оплаты</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.payment.item1">На старте сервиса — только безналичная оплата.</li>
+            <li data-i18n="rules.payment.item2">Изменение маршрута пересчитывает итоговую сумму.</li>
+            <li data-i18n="rules.payment.item3">Комиссия списывается автоматически; водитель получает оговорённую сумму.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="rules.rating.title">Рейтинг и блокировки</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.rating.item1">Рейтинг влияет на комиссию для водителей и приоритет заказов.</li>
+            <li data-i18n="rules.rating.item2">Возможны взаимные блокировки: 1 неделя / 1 месяц / 6 месяцев / 1 год / навсегда.</li>
+            <li data-i18n="rules.rating.item3">Пропуск 3 подряд заказов снижает рейтинг на 0.1.</li>
+          </ul>
+        </div>
+        <div>
+          <h2 data-i18n="rules.privacy.title">Данные и конфиденциальность</h2>
+          <ul class="bullet-list">
+            <li data-i18n="rules.privacy.item1">Личные данные используются для обеспечения работы сервиса и безопасности.</li>
+            <li data-i18n="rules.privacy.item2">Данные могут передаваться партнёрам только по закону и с целью оказания услуг.</li>
+            <li data-i18n="rules.privacy.item3">Пользователь может запросить удаление или исправление своих данных.</li>
           </ul>
         </div>
       </div>
     </section>
   </main>
 
+  <section id="contacts" class="section">
+    <div class="container grid three">
+      <div class="feature-card">
+        <h3 data-i18n="contacts.title">Свяжитесь с нами</h3>
+        <p data-i18n="contacts.email">support@boomboom.taxi</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="contacts.phone.label">Телефон</h3>
+        <p data-i18n="contacts.phone.value">+372 5555 0000</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="contacts.office.label">Офис</h3>
+        <p data-i18n="contacts.office.value">Tallinn, Estonia</p>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
-    © BoomBoom Taxi, 2025. Платформа в разработке (MVP).
+    <div class="container footer-grid">
+      <div>
+        <div class="logo footer-logo">
+          <img src="icons/bbt-logo.svg" alt="BoomBoom Taxi" class="logo-icon" />
+          <div class="logo-text">
+            <span class="logo-text-main" data-i18n="brand.name">BoomBoom Taxi</span>
+            <span class="logo-text-sub" data-i18n="brand.tagline">Водитель сам ставит цену</span>
+          </div>
+        </div>
+        <p class="muted" data-i18n="footer.copy">© BoomBoom Taxi, 2025. Platform in development (MVP).</p>
+      </div>
+      <div class="footer-links">
+        <a href="rules.html" data-i18n="footer.rules">Правила сервиса</a>
+        <a href="#" data-i18n="footer.privacy">Политика конфиденциальности</a>
+        <a href="#" data-i18n="footer.contact">contact@boomboom.taxi</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">Fb</a>
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="Instagram">Ig</a>
+      </div>
+    </div>
   </footer>
+  <script src="app.js"></script>
 </body>
 </html>
